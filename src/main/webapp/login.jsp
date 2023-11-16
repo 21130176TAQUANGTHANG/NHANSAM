@@ -1,7 +1,5 @@
+<%@ page import="com.hcmuaf.login.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-    String error = (String) request.getAttribute("error");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +36,11 @@
                 </li>
             </ul>
         </div>
+
         <div class="search">
-            <form action="">
+            <form action="./search" method="post">
                 <label>
-                    <input type="text" placeholder="Tìm kiếm" name="search">
+                    <input type="text" placeholder="Tìm kiếm" name="text">
                 </label>
                 <button type="submit"><i class="bi bi-search"></i></button>
             </form>
@@ -49,27 +48,44 @@
 
         <div class="account">
             <div class="sign-in">
-                <a href="sign-up.jsp" style="padding: 0 10px">Đăng ký</a>
+                <% User auth = (User) session.getAttribute("auth"); %>
+                <% if(auth == null){ %>
+                <a href="sign-up.jsp">Đăng ký</a>
                 <a href="login.jsp">Đăng nhập</a>
+                <% } else { %>
+                <p>Chào bạn: <%= auth.getFullname() %> </p>
+                <a href="logout.jsp">Đăng xuất</a>
+                <% } %>
             </div>
         </div>
         <div class="shopping-img">
             <a href=""> <img src="img/shopping.png" alt="" width="40px"></a>
         </div>
+
+
     </div>
 </header>
 
 <div id="login-super">
-
     <div class="login">
         <div class="content">
             <h2>Đăng nhập</h2>
         </div>
-        <form action="./doLogin" method="post">
+        <%
+            String error = (String)request.getAttribute("error");
+            if(error != null) {
+        %>
+        <p style="color: red; text-align: center; margin-right: 0">
+            <%= error %>
+        </p>
+        <%
+            }
+        %>
+        <form action=./doLogin method="post">
             <div class="input-box">
                 <div class="input">
                     <label>
-                        <input name="email" type="text" placeholder="email" required>
+                        <input type="text" value="<%= request.getParameter("username")!=null?request.getParameter("username"):"" %>" name="username" placeholder="username">
                     </label>
                 </div>
                 <div class="input">

@@ -64,35 +64,23 @@
         <div class="content">
             <h2>Đăng ký</h2>
         </div>
-        <form action="">
+        <form action="./sign-up" method="post">
             <div class="input-box">
                 <div class="input">
                     <label>
-                        <input type="text" placeholder="email">
+                        <input type="text" name="username" placeholder="email">
                     </label>
                 </div>
                 <div class="input">
                     <label>
-                        <input type="password" placeholder="mật khẩu">
+                        <input type="password" name="password" placeholder="mật khẩu">
                     </label>
                 </div>
                 <div class="input">
                     <label>
-                        <input type="password" placeholder="Xác nhận mật khẩu">
+                        <input type="password" name="re_password" placeholder="Xác nhận mật khẩu">
                     </label>
-                </div><div class="input">
-                <label>
-                    <input type="text" placeholder="Họ & Tên">
-                </label>
-            </div><div class="input">
-                <label>
-                    <input type="text" placeholder="Địa chỉ">
-                </label>
-            </div><div class="input">
-                <label>
-                    <input type="text" placeholder="Số điện thoại">
-                </label>
-            </div>
+                </div>
             </div>
             <div class="submit">
                 <button type="submit">Đăng ký</button>

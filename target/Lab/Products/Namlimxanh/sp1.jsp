@@ -1,4 +1,11 @@
+<%@ page import="com.hcmuaf.login.ControllerDAO" %>
+<%@ page import="com.hcmuaf.Product.ProductItem" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.hcmuaf.Product.ItemCart" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.hcmuaf.db.DBContext" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -70,7 +77,6 @@
         </ol>
     </nav>
 </div>
-
 <div id="super-item">
 
     <div class="img-product">
@@ -80,7 +86,6 @@
 
         <div class="information-product">
             <div class="information-buy">
-
                 <h2>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g</h2>
                 <p>Tình trạng: <b>Còn hàng</b></p>
                 <p>Thương hiệu: <b style="color: #BF1E2E"> Nấm lim xanh Quảng Nam</b> </p>
@@ -88,7 +93,7 @@
                 <p>Trọng lượng: 200ml</p>
 
 
-                <p>Giá: <b style="color: #BF1E2E; font-size: 25px; margin-left: 30px">4.000.000 VND</b> </p>
+                <p>Giá: <b style="color: #BF1E2E; font-size: 25px; margin-left: 30px"></b> </p>
                 <label for="quantity">Số lượng: </label>
                 <button class="quantity-btn" onclick="decrement()">-</button>
                 <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
@@ -97,12 +102,12 @@
                 <div class="buy-item">
                     <a href="#"><i class="bi bi-cart"></i>Mua</a>
                 </div>
+                <p>4.00.000</p>
+
                 <div class="buy-item">
-                    <a href="#"><i class="bi bi-cart"></i>add cart</a>
+                    <a href="#"><i class="bi bi-cart"></i>Thêm vào giỏ hàng</a>
                 </div>
             </div>
-
-
         </div>
     </div>
 
