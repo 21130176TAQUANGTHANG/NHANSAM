@@ -1,4 +1,10 @@
-<%@ page import="com.hcmuaf.login.User" %><%--
+<%@ page import="com.hcmuaf.login.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.hcmuaf.Product.ItemCart" %>
+<%@ page import="com.hcmuaf.Product.ProductItem" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.hcmuaf.ControllerDAO" %>
+<%@ page import="com.hcmuaf.Product.Category" %><%--
   Created by IntelliJ IDEA.
   User: thang
   Date: 11/9/2023
@@ -18,25 +24,25 @@
     <div class="header-menu">
 
         <div class="logo">
-            <a href="index.jsp"><img src="img/Screenshot%202023-10-19%20101211.png" alt=""></a>
+            <a href="index.jsp"><i class="bi bi-yin-yang" style="font-size: 30px; color: #BF1E2E;"></i></a>
         </div>
 
         <div class="menu">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">TRANG CHỦ</a>
+                    <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">SẢN PHẨM</a>
+                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">HỆ THỐNG</a>
+                    <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">LIÊN HỆ</a>
+                    <a class="nav-link" href="contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
                 </li>
             </ul>
         </div>
@@ -46,7 +52,9 @@
                 <label>
                     <input type="text" placeholder="Tìm kiếm" name="text">
                 </label>
-                <button type="submit"><i class="bi bi-search"></i></button>
+                <button type="submit" style="height: 30px;
+    border: none;
+    background-color: snow;"><i class="bi bi-search"></i></button>
             </form>
         </div>
 
@@ -54,8 +62,12 @@
             <div class="sign-in">
                 <% User auth = (User) session.getAttribute("auth"); %>
                 <% if(auth == null){ %>
-                <a href="sign-up.jsp">Đăng ký</a>
-                <a href="login.jsp">Đăng nhập</a>
+                <a href="sign-up.jsp" style="color:#BF1E2E;
+    text-decoration: none;
+    font-size: 20px;">Đăng ký</a>
+                <a href="login.jsp" style="color: #BF1E2E;
+    text-decoration: none;
+    font-size: 20px;">Đăng nhập</a>
                 <% } else { %>
                 <p>Chào bạn: <%= auth.getFullname() %> </p>
                 <a href="logout.jsp">Đăng xuất</a>
@@ -63,12 +75,11 @@
             </div>
         </div>
         <div class="shopping-img">
-            <a href=""> <img src="img/shopping.png" alt="" width="40px"></a>
+            <a href="cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
         </div>
-
-
     </div>
 </header>
+
 
 <section class="h-100 h-custom">
     <div class="container h-100 py-5">
@@ -81,22 +92,21 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col" class="h5">Sản phẩm</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Giá tiền</th>
                             <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
-
                         <tr>
                             <td class="align-middle" style="padding-right: 50px">
                                 <h3>1</h3>
                             </td>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="img/namlinhxanh400g.png" style="width: 200px; height: 190px;" class="img-fluid rounded-3 ">
+                                    <img src="img/namlinhxanh400g.png" style="width: 200px; height: 190px;" class="img-fluid rounded-3">
                                     <div class="flex-column ms-4">
-                                        <p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g</p>
+                                        <p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p>
                                     </div>
                                 </div>
                             </th>
@@ -107,7 +117,7 @@
                                         <i class="fas fa-minus"></i>
                                     </button>
 
-                                    <input id="form1" min="0" name="quantity" value="2" type="number"
+                                    <input id="form1" min="0" name="quantity" type="number"
                                            class="form-control form-control-sm" style="width: 50px;" />
 
                                     <button class="btn btn-link px-2"
@@ -117,54 +127,102 @@
                                 </div>
                             </td>
                             <td class="align-middle">
-                                <p class="mb-0" style="font-weight: 500;">$9.99</p>
+                                <p class="mb-0" style="font-weight: 500;">4.000.000</p>
                             </td>
                             <td class="align-middle border-bottom-0">
-                                <a href="#"><i class="bi bi-x-lg" style="color: #BF1E2E;"></i></a>
+                                <a href=""><i class="bi bi-x-lg" style="color: #BF1E2E;"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="align-middle" style="padding-right: 50px">
+                                <h3>2</h3>
+                            </td>
+                            <th scope="row">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://samyenanhquan.com/wp-content/uploads/2020/11/caohshopgo2lo1.jpg" style="width: 200px; height: 190px;" class="img-fluid rounded-3">
+                                    <div class="flex-column ms-4">
+                                        <p>Cao Hồng Sâm Linh Chi ACHIMMADANG Hộp Gỗ 2 Hủ x 500G</p>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="align-middle">
+                                <div class="d-flex flex-row">
+                                    <button class="btn btn-link px-2"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                    <input id="form2" min="0" name="quantity" type="number"
+                                           class="form-control form-control-sm" style="width: 50px;" />
+
+                                    <button class="btn btn-link px-2"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <p class="mb-0" style="font-weight: 500;">4.000.000</p>
+                            </td>
+                            <td class="align-middle border-bottom-0">
+                                <a href=""><i class="bi bi-x-lg" style="color: #BF1E2E;"></i></a>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
-                    <div class="card-body p-4">
-
-                        <div class="row">
-                            <div class="col-lg-4 col-xl-3">
-                                <div class="d-flex justify-content-between" style="font-weight: 500;">
-                                    <p class="mb-2">Subtotal</p>
-                                    <p class="mb-2">$23.49</p>
-                                </div>
-
-                                <div class="d-flex justify-content-between" style="font-weight: 500;">
-                                    <p class="mb-0">Shipping</p>
-                                    <p class="mb-0">$2.99</p>
-                                </div>
-
-                                <hr class="my-4">
-
-                                <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
-                                    <p class="mb-2">Total (tax included)</p>
-                                    <p class="mb-2">$26.48</p>
-                                </div>
-
-                                <button type="button" class="btn btn-primary btn-block btn-lg">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Checkout</span>
-                                        <span>$26.48</span>
-                                    </div>
-                                </button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
             </div>
         </div>
     </div>
 </section>
+<a href="index.jsp">Continue Shopping</a>
+<footer style="background-color: #BF1E2E;">
+    <div class="footer" style="display: flex;
+    justify-content: space-around;
+    align-items: center;">
+        <div class="footer-category">
+            <ul style="list-style: none; padding: 30px">
+                <%
+                    ControllerDAO dao = new ControllerDAO();
+                    List<Category> list = dao.getNAMECategory();
+                    for (Category p: list) {
+                %>
+                <li><i class="bi bi-caret-right-fill"></i><a class="content-item" href="#" style="padding: 10px;
+                        color: white;
+                        text-decoration: none"><%=p.getName()%></a></li>
+                <% }%>
+            </ul>
+        </div>
+
+        <div class="footer-information">
+            <ul style="list-style: none; padding: 30px">
+                <li style="padding: 10px;"><i class="bi bi-geo-alt"></i><a class="content-item" href="#" style="padding: 10px;
+                        color: white;
+                        text-decoration: none">Địa chỉ: 123 đường ABC, Quận Gò Vấp, TPH.HCM</a></li>
+
+                <li style="padding: 10px"><i class="bi bi-telephone-fill"></i><a class="content-item" href="#" style="padding: 10px;
+                        color: white;
+                        text-decoration: none">Số điện thoại: 01234567812</a></li>
+
+                <li style="padding:10px"><i class="bi bi-envelope"></i><a class="content-item" href="#" style="padding: 10px;
+                        color: white;
+                        text-decoration: none">Địa chỉ email:index@gmail.com</a></li>
+
+            </ul>
+        </div>
+
+        <div class="footer-question">
+            <h2 style="color: white;">Hỗ trợ khách hàng</h2>
+            <label>
+                <input type="text" required="Nhập email vào đây">
+            </label>
+            <input type="submit" style="border-radius: 20px; border: none">
+        </div>
+
+    </div>
+</footer>
 </body>
 </html>

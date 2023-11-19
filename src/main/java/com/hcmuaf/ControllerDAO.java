@@ -1,8 +1,9 @@
-package com.hcmuaf.login;
+package com.hcmuaf;
 
 import com.hcmuaf.Product.Category;
 import com.hcmuaf.Product.ProductItem;
 import com.hcmuaf.db.DBContext;
+import com.hcmuaf.login.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,9 +17,35 @@ public class ControllerDAO {
     PreparedStatement ps =null;
     ResultSet rs= null;
 
-    public User checkLogin( String username, String password){
+
+    public List<User> getAllAccount(){
+        List<User>list=new ArrayList<>();
+        String query = "SELECT*FROM users";
         try {
-            String query="SELECT*FROM user WHERE username=? AND password=?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new User(
+                        rs.getInt(1), // Sửa đúng số cột trả về từ câu truy vấn
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7)
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+    public User checkLogin(String username, String password){
+        try {
+            String query="SELECT*FROM users WHERE username=? AND password=?";
             conn = new DBContext().getConnection();
             ps=conn.prepareStatement(query);
             ps.setString(1,username);
@@ -44,7 +71,7 @@ public class ControllerDAO {
         return null;
     }
     public User checkLoginExist( String username){
-        String query="SELECT*FROM user WHERE username=?";
+        String query="SELECT*FROM users WHERE username=?";
         try {
             conn = new DBContext().getConnection();
             ps=conn.prepareStatement(query);
@@ -69,13 +96,16 @@ public class ControllerDAO {
         }
         return null;
     }
-    public void signup(String username,String password){
-        String query = "INSERT INTO user(username, password, Fullname, phone, address, role) VALUES(?, ?, 0, 0, 0, 0)";
+    public void signup(String username,String password, String Fullname, String phone,String address){
+        String query = "INSERT INTO users(username, password, Fullname, phone, address, role) VALUES(?, ?, ?, ?, ?, 0)";
         try {
             conn= new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1,username);
             ps.setString(2,password);
+            ps.setString(3,Fullname);
+            ps.setString(4,phone);
+            ps.setString(5,address);
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -84,7 +114,7 @@ public class ControllerDAO {
     }
    public List<ProductItem> getAllProduct(){
         List<ProductItem>list=new ArrayList<>();
-        String query = "SELECT*FROM product";
+        String query = "SELECT*FROM products";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -95,8 +125,8 @@ public class ControllerDAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getDouble(5),
-                        rs.getInt(6)
+                        rs.getString(5),
+                        rs.getString(6)
                 ));
             }
         } catch (SQLException e) {
@@ -108,7 +138,7 @@ public class ControllerDAO {
    }
     public List<ProductItem> searchByName(String text) {
         List<ProductItem> list = new ArrayList<>();
-        String query = "SELECT * FROM product\n" +
+        String query = "SELECT * FROM products \n" +
                 "WHERE name LIKE ?";
         try {
             conn = new DBContext().getConnection();
@@ -121,8 +151,8 @@ public class ControllerDAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getDouble(5),
-                        rs.getInt(6)
+                        rs.getString(5),
+                        rs.getString(6)
                 ));
             }
         } catch (SQLException e) {
@@ -144,7 +174,7 @@ public class ControllerDAO {
     }
     public List<Category> getNAMECategory(){
         List<Category>list=new ArrayList<>();
-        String query = "SELECT * FROM category";
+        String query = "SELECT * FROM categories";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -163,11 +193,39 @@ public class ControllerDAO {
         return list;
     }
 
+    public List<ProductItem> findID(String id) {
+        List<ProductItem> list = new ArrayList<>();
+        String query = "SELECT * FROM products\n" +
+                "WHERE id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id); // Sửa lại để sử dụng "%" đúng cách
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ProductItem(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6)
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+
     public static void main(String[] args) {
         try {
             ControllerDAO dao = new ControllerDAO();
-            List<Category> list = dao.getNAMECategory();
-            for (Category a:list) {
+            List<User> list = dao.getAllAccount();
+            for (User a:list) {
                 System.out.println(a);
             }
 

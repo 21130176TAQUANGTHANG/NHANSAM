@@ -1,16 +1,15 @@
 package com.hcmuaf.Product;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class ItemCart implements Serializable {
-    private int id;
     private ProductItem product;
     private int quantity;
-    public ItemCart() {
+    public ItemCart(List<ProductItem> id, int i) {
     }
 
-    public ItemCart(int id, ProductItem product, int quantity) {
-        this.id = id;
+    public ItemCart(ProductItem product, int quantity) {
         this.product = product;
         this.quantity = quantity;
     }
@@ -18,18 +17,9 @@ public class ItemCart implements Serializable {
     @Override
     public String toString() {
         return "ItemCart{" +
-                "id=" + id +
                 ", product=" + product +
                 ", quantity=" + quantity +
                 '}';
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public ProductItem getProduct() {
