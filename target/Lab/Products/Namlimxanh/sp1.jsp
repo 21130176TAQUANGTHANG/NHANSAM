@@ -20,27 +20,26 @@
 <body>
 <header id="header">
     <div class="header-menu">
-
         <div class="logo">
-        <a href="../../index.jsp">asd</a>
+            <a href="../../index.jsp"><i class="bi bi-yin-yang" style="font-size: 30px; color: #BF1E2E;"></i></a>
         </div>
 
         <div class="menu">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
+                    <a class="nav-link" aria-current="page" href="../../index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="../../Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href=../../"cart.jsp"style="color: #BF1E2E;">CART </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                    <a class="nav-link" href="../../policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
+                    <a class="nav-link" href="../../contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
                 </li>
             </ul>
         </div>
@@ -73,7 +72,7 @@
             </div>
         </div>
         <div class="shopping-img">
-            <a href="cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
+            <a href="../../cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
         </div>
     </div>
 </header>

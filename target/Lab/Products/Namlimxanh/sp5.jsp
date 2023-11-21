@@ -23,7 +23,7 @@
     <div class="header-menu">
 
         <div class="logo">
-            <a href="index.jsp"><i class="bi bi-yin-yang" style="font-size: 30px; color: #BF1E2E;"></i></a>
+            <a href="../../index.jsp"><i class="bi bi-yin-yang" style="font-size: 30px; color: #BF1E2E;"></i></a>
         </div>
 
         <div class="menu">

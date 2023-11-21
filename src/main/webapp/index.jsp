@@ -525,26 +525,26 @@
                 <li><i class="bi bi-caret-right-fill"></i><a class="content-item" href="#" style="padding: 10px;
                         color: white;
                         text-decoration: none"><%=p.getName()%></a></li>
-                    <% }%>
+                <% }%>
 
             </ul>
         </div>
 
         <div class="footer-information">
-                <ul style="list-style: none; padding: 30px">
-                    <li style="padding: 10px;"><i class="bi bi-geo-alt"></i><a class="content-item" href="#" style="padding: 10px;
+            <ul style="list-style: none; padding: 30px">
+                <li style="padding: 10px;"><i class="bi bi-geo-alt"></i><a class="content-item" href="#" style="padding: 10px;
                         color: white;
                         text-decoration: none">Địa chỉ: 123 đường ABC, Quận Gò Vấp, TPH.HCM</a></li>
 
-                    <li style="padding: 10px"><i class="bi bi-telephone-fill"></i><a class="content-item" href="#" style="padding: 10px;
+                <li style="padding: 10px"><i class="bi bi-telephone-fill"></i><a class="content-item" href="#" style="padding: 10px;
                         color: white;
                         text-decoration: none">Số điện thoại: 01234567812</a></li>
 
-                    <li style="padding:10px"><i class="bi bi-envelope"></i><a class="content-item" href="#" style="padding: 10px;
+                <li style="padding:10px"><i class="bi bi-envelope"></i><a class="content-item" href="#" style="padding: 10px;
                         color: white;
                         text-decoration: none">Địa chỉ email:index@gmail.com</a></li>
 
-                </ul>
+            </ul>
         </div>
 
         <div class="footer-question">
