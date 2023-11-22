@@ -125,8 +125,9 @@ public class ControllerDAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6)
+                        rs.getInt(5),
+                        rs.getDouble(6),
+                        rs.getInt(7)
                 ));
             }
         } catch (SQLException e) {
@@ -151,8 +152,9 @@ public class ControllerDAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6)
+                        rs.getInt(5),
+                        rs.getDouble(6),
+                        rs.getInt(7)
                 ));
             }
         } catch (SQLException e) {
@@ -208,8 +210,9 @@ public class ControllerDAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6)
+                        rs.getInt(5),
+                        rs.getDouble(6),
+                        rs.getInt(7)
                 ));
             }
         } catch (SQLException e) {

@@ -15,8 +15,11 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+
+
         ControllerDAO dao = new ControllerDAO();
         User a = dao.checkLogin(username, password);
+
 
         if (a == null) {
             request.setAttribute("error", "email hoặc mật khẩu không chính xác");

@@ -30,6 +30,9 @@
     display: block;
     margin: 10vh auto 0 auto;
 }
+.formcarry-container form{
+    padding-bottom: 100px;
+}
 
 .formcarry-form label {
     display: block;

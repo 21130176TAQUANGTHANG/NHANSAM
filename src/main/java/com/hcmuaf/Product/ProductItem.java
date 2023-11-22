@@ -6,17 +6,19 @@ public class ProductItem {
     private String name;
     private String image;
     private String type;
-    private String  price;
-    private String cateID;
+    private int quantity;
+    private double  price;
+    private int cateID;
 
     public ProductItem() {
     }
 
-    public ProductItem(int id, String name, String image, String type, String price, String cateID) {
+    public ProductItem(int id, String name, String image, String type, int quantity, double price, int cateID) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.type = type;
+        this.quantity = quantity;
         this.price = price;
         this.cateID = cateID;
     }
@@ -24,12 +26,13 @@ public class ProductItem {
     @Override
     public String toString() {
         return "ProductItem{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
                 ", type='" + type + '\'' +
-                ", price='" + price + '\'' +
-                ", cateID='" + cateID + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", cateID=" + cateID +
                 '}';
     }
 
@@ -65,19 +68,37 @@ public class ProductItem {
         this.type = type;
     }
 
-    public String getPrice() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        if(quantity <1 ) quantity=1;
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getCateID() {
+    public int getCateID() {
         return cateID;
     }
 
-    public void setCateID(String cateID) {
+    public void setCateID(int cateID) {
         this.cateID = cateID;
     }
+
+
+    public void quantityUp(){
+        this.quantity++;
+    }
+    public void quantityUp(int quantity){
+        setQuantity(this.quantity + quantity);
+    }
+
 }
