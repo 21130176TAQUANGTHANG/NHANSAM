@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -112,7 +113,7 @@
             <div class="buy">
                 <p><%= product.getPrice()%></p>
                 <button type="button" class="btn-ginseng">Mua</button>
-                <a href="cart?productId=<%= product.getId() %>">Add to Cart</a>
+                <a href="#">Add to Cart</a>
 
             </div>
         </div>

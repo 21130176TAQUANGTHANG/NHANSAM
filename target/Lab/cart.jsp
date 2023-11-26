@@ -122,7 +122,7 @@
                                 <div class="d-flex align-items-center">
                                     <img src="img/namlinhxanh400g.png" style="width: 200px; height: 190px;" class="img-fluid rounded-3">
                                     <div class="flex-column ms-4">
-                                        <p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p>
+                                        <p><%=p.getName()%></p>
                                     </div>
                                 </div>
                             </th>
