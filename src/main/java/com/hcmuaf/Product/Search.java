@@ -1,6 +1,6 @@
 package com.hcmuaf.Product;
 
-import com.hcmuaf.ControllerDAO;
+import com.hcmuaf.db.ControllerDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ public class Search extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String text = req.getParameter("text");
         ControllerDAO dao = new ControllerDAO();
-        List<ProductItem>list = dao.searchByName(text);
+        List<Product> list = dao.searchByName(text);
 
         req.setAttribute("searchResult", list);
         req.getRequestDispatcher("Productss.jsp").forward(req,resp);

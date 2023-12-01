@@ -1,6 +1,6 @@
 package com.hcmuaf.login;
 
-import com.hcmuaf.ControllerDAO;
+import com.hcmuaf.db.ControllerDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

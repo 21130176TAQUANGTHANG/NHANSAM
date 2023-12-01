@@ -1,7 +1,7 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.hcmuaf.Product.ProductItem" %>
-<%@ page import="com.hcmuaf.ControllerDAO" %>
+<%@ page import="com.hcmuaf.Product.Product" %>
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,8 +34,8 @@
         </thead>
         <tbody>
         <% ControllerDAO dao = new ControllerDAO();
-            List< ProductItem> list = dao.getAllProduct();
-            for (ProductItem p : list) {
+            List<Product> list = dao.getAllProduct();
+            for (Product p : list) {
 
 
         %>

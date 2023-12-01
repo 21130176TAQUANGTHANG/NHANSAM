@@ -1,9 +1,11 @@
-<%@ page import="com.hcmuaf.Product.ProductItem" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.hcmuaf.Product.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.hcmuaf.ControllerDAO" %>
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page import="com.hcmuaf.login.User" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.hcmuaf.Product.Category" %><%--
+<%@ page import="com.hcmuaf.Product.Category" %>
+<%@ page import="com.hcmuaf.cart.Cart" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: thang
   Date: 11/11/2023
@@ -76,53 +78,49 @@
             </div>
         </div>
         <div class="shopping-img">
+
+            <%
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                }
+            %>
+
             <a href="cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
+            <span><%= cart.getTotal()%>-10</span>
         </div>
     </div>
 </header>
 
-
 <div class="tab_content">
     <div class="product-container" id="menu_1">
+  <%
+ ControllerDAO daoo = new ControllerDAO();
+ List<Product> pd = daoo.getAllProduct();
+ for (Product product : pd) {
+     %>
+     <div class="product-ite">
+       <img src="<%= product.getImage()%>" alt="">
+       <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
+     <div class="buy">
+          <p><%= product.getPrice()%></p>
+          <button type="button" class="btn-ginseng">Mua</button>
+            <a href="add-cart?id=<%=product.getId()%>">Add to Cart</a>
+
+      </div>
+     </div>
+    <%
+
+       }
+   %>
 
 
 
-        <%
-            String searchText = request.getParameter("text");
-            List<ProductItem> productList;
 
-            if (searchText != null && !searchText.isEmpty()) {
-
-            // Nếu có văn bản tìm kiếm, sử dụng kết quả tìm kiếm
-            productList = new ControllerDAO().searchByName(searchText);
-
-            } else {
-            // Ngược lại, hiển thị tất cả sản phẩm
-            productList = new ControllerDAO().getAllProduct();
-            }
-
-            for (ProductItem product : productList) {
-        %>
-
-
-
-        <!-- nấm lim xanh -->
-        <div class="product-ite">
-            <img src="<%= product.getImage()%>" alt="">
-            <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
-            <div class="buy">
-                <p><%= product.getPrice()%></p>
-                <button type="button" class="btn-ginseng">Mua</button>
-                <a href="cart?productId=<%= product.getId() %>">Add to Cart</a>
-
-            </div>
-        </div>
-        <%
-            }
-        %>
 
     </div>
 </div>
+
 
 <footer style="background-color: #BF1E2E;">
     <div class="footer" style="display: flex;

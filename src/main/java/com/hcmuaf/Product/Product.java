@@ -1,6 +1,6 @@
 package com.hcmuaf.Product;
 
-public class ProductItem {
+public class Product {
 
     private int id;
     private String name;
@@ -10,10 +10,10 @@ public class ProductItem {
     private double  price;
     private int cateID;
 
-    public ProductItem() {
+    public Product() {
     }
 
-    public ProductItem(int id, String name, String image, String type, int quantity, double price, int cateID) {
+    public Product(int id, String name, String image, String type, int quantity, double price, int cateID) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -73,7 +73,6 @@ public class ProductItem {
     }
 
     public void setQuantity(int quantity) {
-        if(quantity <1 ) quantity=1;
         this.quantity = quantity;
     }
 
@@ -92,13 +91,4 @@ public class ProductItem {
     public void setCateID(int cateID) {
         this.cateID = cateID;
     }
-
-
-    public void quantityUp(){
-        this.quantity++;
-    }
-    public void quantityUp(int quantity){
-        setQuantity(this.quantity + quantity);
-    }
-
 }

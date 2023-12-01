@@ -1,6 +1,6 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.hcmuaf.ControllerDAO" %>
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page import="com.hcmuaf.Product.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

@@ -1,8 +1,7 @@
-package com.hcmuaf;
+package com.hcmuaf.db;
 
 import com.hcmuaf.Product.Category;
-import com.hcmuaf.Product.ProductItem;
-import com.hcmuaf.db.DBContext;
+import com.hcmuaf.Product.Product;
 import com.hcmuaf.login.User;
 
 import java.sql.Connection;
@@ -20,7 +19,7 @@ public class ControllerDAO {
 
     public List<User> getAllAccount(){
         List<User>list=new ArrayList<>();
-        String query = "SELECT*FROM users";
+        String query = "SELECT * FROM users";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -112,15 +111,15 @@ public class ControllerDAO {
             throw new RuntimeException(e);
         }
     }
-   public List<ProductItem> getAllProduct(){
-        List<ProductItem>list=new ArrayList<>();
-        String query = "SELECT*FROM products";
+   public List<Product> getAllProduct(){
+        List<Product>list=new ArrayList<>();
+        String query = "SELECT * FROM products";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new ProductItem(
+                list.add(new Product(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -137,8 +136,34 @@ public class ControllerDAO {
         }
         return list;
    }
-    public List<ProductItem> searchByName(String text) {
-        List<ProductItem> list = new ArrayList<>();
+
+    public Product getById(int proid){
+        String query = "SELECT * FROM products WHERE id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1,proid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Product p = new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getDouble(6),
+                        rs.getInt(7));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    return null;
+    }
+
+
+    public List<Product> searchByName(String text) {
+        List<Product> list = new ArrayList<>();
         String query = "SELECT * FROM products \n" +
                 "WHERE name LIKE ?";
         try {
@@ -147,7 +172,7 @@ public class ControllerDAO {
             ps.setString(1, "%" + text + "%"); // Sửa lại để sử dụng "%" đúng cách
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new ProductItem(
+                list.add(new Product(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -195,40 +220,13 @@ public class ControllerDAO {
         return list;
     }
 
-    public List<ProductItem> findID(String id) {
-        List<ProductItem> list = new ArrayList<>();
-        String query = "SELECT * FROM products\n" +
-                "WHERE id=?";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setString(1, id); // Sửa lại để sử dụng "%" đúng cách
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new ProductItem(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getDouble(6),
-                        rs.getInt(7)
-                ));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return list;
-    }
 
 
     public static void main(String[] args) {
         try {
             ControllerDAO dao = new ControllerDAO();
-            List<User> list = dao.getAllAccount();
-            for (User a:list) {
+            List<Product> list = dao.getAllProduct();
+            for (Product a:list) {
                 System.out.println(a);
             }
 

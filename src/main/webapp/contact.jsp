@@ -1,5 +1,5 @@
 <%@ page import="com.hcmuaf.login.User" %>
-<%@ page import="com.hcmuaf.ControllerDAO" %>
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page import="com.hcmuaf.Product.Category" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.

@@ -1,8 +1,8 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.hcmuaf.Product.ProductItem" %>
+<%@ page import="com.hcmuaf.Product.Product" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.hcmuaf.ControllerDAO" %>
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page import="com.hcmuaf.Product.Category" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="com.hcmuaf.cart.Cart" %><%--
@@ -108,9 +108,9 @@
 
                         <%
                             Cart cart = (Cart) session.getAttribute("cart");
-                            Iterator<ProductItem> it = cart.list().iterator();
+                            Iterator<Product> it = cart.list().iterator();
                             int i=0;
-                            ProductItem p;
+                            Product p;
                             while(it.hasNext()) {
                                 p = it.next();
                         %>
