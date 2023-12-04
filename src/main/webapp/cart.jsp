@@ -1,9 +1,5 @@
 <%@ page import="com.hcmuaf.login.User" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.hcmuaf.Product.Product" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.hcmuaf.db.ControllerDAO" %>
-<%@ page import="com.hcmuaf.Product.Category" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="com.hcmuaf.cart.Cart" %><%--
   Created by IntelliJ IDEA.
@@ -106,42 +102,34 @@
                         </thead>
                         <tbody>
 
-                        <%
-                            Cart cart = (Cart) session.getAttribute("cart");
-                            Iterator<Product> it = cart.list().iterator();
-                            int i=0;
-                            Product p;
-                            while(it.hasNext()) {
-                                p = it.next();
-                        %>
                         <tr>
                             <td class="align-middle" style="padding-right: 50px">
-                                <h3><%= i+1%></h3>
+                                <h3><span>1</span></h3>
                             </td>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
                                     <img src="img/namlinhxanh400g.png" style="width: 200px; height: 190px;" class="img-fluid rounded-3">
                                     <div class="flex-column ms-4">
-                                        <p><%=p.getName()%></p>
+                                        <p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p>
                                     </div>
                                 </div>
                             </th>
-<%--                            <td class="align-middle">--%>
-<%--                                <div class="d-flex flex-row">--%>
-<%--                                    <button class="btn btn-link px-2"--%>
-<%--                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">--%>
-<%--                                        <i class="fas fa-minus"></i>--%>
-<%--                                    </button>--%>
+                            <td class="align-middle">
+                                <div class="d-flex flex-row">
+                                    <button class="btn btn-link px-2"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
 
-<%--                                    <input id="form1" min="0" name="quantity" type="number"--%>
-<%--                                           class="form-control form-control-sm" style="width: 50px;" />--%>
+                                    <input id="form1" min="0" name="quantity" type="number"
+                                           class="form-control form-control-sm" style="width: 50px;" />
 
-<%--                                    <button class="btn btn-link px-2"--%>
-<%--                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">--%>
-<%--                                        <i class="fas fa-plus"></i>--%>
-<%--                                    </button>--%>
-<%--                                </div>--%>
-<%--                            </td>--%>
+                                    <button class="btn btn-link px-2"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </td>
                             <td class="align-middle">
                                 <p class="mb-0" style="font-weight: 500;">4.000.000</p>
                             </td>
@@ -150,7 +138,6 @@
                             </td>
                         </tr>
 
-                            <%}%>
                         </tbody>
                     </table>
                 </div>

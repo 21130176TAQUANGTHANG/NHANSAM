@@ -51,15 +51,16 @@
         </div>
 
         <div class="search">
-            <form action="./search" method="post">
+            <form action="" method="get">
                 <label>
-                    <input type="text" placeholder="Tìm kiếm" name="text">
+                    <input type="text" placeholder="Tìm kiếm" name="searchText">
                 </label>
                 <button type="submit" style="height: 30px;
-    border: none;
-    background-color: snow;"><i class="bi bi-search"></i></button>
+        border: none;
+        background-color: snow;"><i class="bi bi-search"></i></button>
             </form>
         </div>
+
 
         <div class="account">
             <div class="sign-in">
@@ -81,44 +82,40 @@
 
             <%
                 Cart cart = (Cart) session.getAttribute("cart");
-                if (cart == null) {
+                if (cart == null)
                     cart = new Cart();
-                }
+
             %>
 
             <a href="cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
-            <span><%= cart.getTotal()%>-10</span>
+            <span><%= cart.getTotal()%></span>
         </div>
     </div>
 </header>
 
 <div class="tab_content">
     <div class="product-container" id="menu_1">
-  <%
- ControllerDAO daoo = new ControllerDAO();
- List<Product> pd = daoo.getAllProduct();
- for (Product product : pd) {
-     %>
-     <div class="product-ite">
-       <img src="<%= product.getImage()%>" alt="">
-       <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
-     <div class="buy">
-          <p><%= product.getPrice()%></p>
-          <button type="button" class="btn-ginseng">Mua</button>
-            <a href="add-cart?id=<%=product.getId()%>">Add to Cart</a>
 
-      </div>
-     </div>
-    <%
-
-       }
-   %>
+        <%ControllerDAO db = new ControllerDAO();
+            List<Product> p = db.getAllProduct();
+            for (Product product: p){
 
 
+        %>
 
 
+             <div class="product-ite">
+               <img src="<%= product.getImage()%>" alt="">
+               <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
+             <div class="buy">
+                  <p><%= product.getPrice()%></p>
+                  <button type="button" class="btn-ginseng">Mua</button>
+                    <a href="add-cart?id=<%= product.getId()%>">Add to Cart</a>
+              </div>
+             </div>
+        <%}%>
 
-    </div>
+            </div>
 </div>
 
 
@@ -127,17 +124,7 @@
     justify-content: space-around;
     align-items: center;">
         <div class="footer-category">
-            <ul style="list-style: none; padding: 30px">
-                <%ControllerDAO dao = new ControllerDAO();
-                    List<Category> list = dao.getNAMECategory();
-                    for (Category p: list) {
-                %>
-                <li><i class="bi bi-caret-right-fill"></i><a class="content-item" href="#" style="padding: 10px;
-                        color: white;
-                        text-decoration: none"><%=p.getName()%></a></li>
-                <% }%>
 
-            </ul>
         </div>
 
         <div class="footer-information">

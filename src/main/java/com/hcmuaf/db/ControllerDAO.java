@@ -152,6 +152,7 @@ public class ControllerDAO {
                         rs.getInt(5),
                         rs.getDouble(6),
                         rs.getInt(7));
+                return p;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

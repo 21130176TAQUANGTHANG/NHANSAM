@@ -22,7 +22,7 @@ public class AddCartController extends HttpServlet {
 
        }
 
-        HttpSession session = req.getSession();
+       HttpSession session = req.getSession();
        Cart cart = (Cart) session.getAttribute("cart");
        if(cart == null){
            cart = new Cart();
