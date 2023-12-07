@@ -1,7 +1,6 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="com.hcmuaf.Product.Product" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="com.hcmuaf.cart.Cart" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: thang
   Date: 11/9/2023
