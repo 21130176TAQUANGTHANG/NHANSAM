@@ -1,11 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.hcmuaf.Product.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page import="com.hcmuaf.login.User" %>
-<%@ page import="com.hcmuaf.Product.Category" %>
 <%@ page import="com.hcmuaf.cart.Cart" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
+<%@ page import="com.hcmuaf.cart.CartProduct" %>
+<%@ page import="java.util.Map" %>
+<%--
   Created by IntelliJ IDEA.
   User: thang
   Date: 11/11/2023
@@ -36,7 +37,7 @@
                     <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
@@ -95,27 +96,26 @@
 
 <div class="tab_content">
     <div class="product-container" id="menu_1">
-
-        <%ControllerDAO db = new ControllerDAO();
-            List<Product> p = db.getAllProduct();
-            for (Product product: p){
-
-
+        <%
+            ControllerDAO dao = new ControllerDAO();
+            List<Product> listP = dao.getAllProduct();
+                for (Product product : listP) {
         %>
-
-
-             <div class="product-ite">
-               <img src="<%= product.getImage()%>" alt="">
-               <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
-             <div class="buy">
-                  <p><%= product.getPrice()%></p>
-                  <button type="button" class="btn-ginseng">Mua</button>
-                    <a href="add-cart?id=<%= product.getId()%>">Add to Cart</a>
-              </div>
-             </div>
-        <%}%>
-
+        <div class="product-ite">
+            <img src="<%= product.getImage()%>" alt="">
+            <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
+            <div class="buy">
+                <p><%= product.getPrice()%></p>
+                <button type="button" class="btn-ginseng">Mua</button>
+                <a href="add-cart?id=<%= product.getId()%>">Add to Cart</a>
             </div>
+        </div>
+        <%
+            }
+        %>
+    </div>
+
+
 </div>
 
 

@@ -111,8 +111,8 @@ public class ControllerDAO {
             throw new RuntimeException(e);
         }
     }
-   public List<Product> getAllProduct(){
-        List<Product>list=new ArrayList<>();
+    public List<Product> getAllProduct() {
+        List<Product> list = new ArrayList<>();
         String query = "SELECT * FROM products";
         try {
             conn = new DBContext().getConnection();
@@ -133,9 +133,12 @@ public class ControllerDAO {
             throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            // Đóng tài nguyên ở đây
         }
         return list;
-   }
+    }
+
 
     public Product getById(int proid){
         String query = "SELECT * FROM products WHERE id=?";
@@ -227,12 +230,16 @@ public class ControllerDAO {
         try {
             ControllerDAO dao = new ControllerDAO();
             List<Product> list = dao.getAllProduct();
-            for (Product a:list) {
-                System.out.println(a);
+            if (!list.isEmpty()) {
+                for (Product a : list) {
+                    System.out.println(a);
+                }
+            } else {
+                System.out.println("Danh sách sản phẩm trống.");
             }
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
 }

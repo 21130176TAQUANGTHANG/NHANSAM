@@ -1,5 +1,9 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="com.hcmuaf.Product.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.hcmuaf.cart.CartProduct" %>
+<%@ page import="com.hcmuaf.cart.Cart" %>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: thang
@@ -14,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shoppingcart.css">
 </head>
 <body>
 <header id="header">
@@ -76,76 +81,68 @@
     </div>
 </header>
 
-<%--<%--%>
-<%--    User c = (User) session.getAttribute("customer");--%>
-<%--    String name = c.getFullname();--%>
-<%--    String email = c.getUsername();--%>
-<%--%>--%>
-<%--<p>thoong tin don hang da dcuo guio <%=email%></p>--%>
 
-<section class="h-100 h-custom">
-    <div class="container h-100 py-5">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col">
+                <%
+                    Cart cart = (Cart) session.getAttribute("cart");
+                    if (cart == null)
+                        cart = new Cart();
 
-                <div class="table-responsive">
-                    <table class="table">
+                    Map<Integer, CartProduct> cartItems = cart.getData();
+                %>
+
+                <h2>Giỏ hàng của bản:</h2>
+
+                <%
+                    if (cartItems.isEmpty()) {
+                %>
+                <p>Giỏ hàng của bạn trống. Vui lòng thêm sản phẩm vào giỏ hàng</p>
+                <%
+                } else {
+                    for (Map.Entry<Integer, CartProduct> entry : cartItems.entrySet()) {
+                        CartProduct cartProduct = entry.getValue();
+                        Product product = cartProduct.getProduct();
+                %>
+                <div class="shopping-cart">
+                    <table id="table-shopping">
                         <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col" class="h5">Sản phẩm</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Giá tiền</th>
-                            <th scope="col"></th>
+                        <tr class="text-cart">
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
-
                         <tr>
-                            <td class="align-middle" style="padding-right: 50px">
-                                <h3><span>1</span></h3>
-                            </td>
-                            <th scope="row">
-                                <div class="d-flex align-items-center">
-                                    <img src="img/namlinhxanh400g.png" style="width: 200px; height: 190px;" class="img-fluid rounded-3">
-                                    <div class="flex-column ms-4">
-                                        <p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p>
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="align-middle">
-                                <div class="d-flex flex-row">
-                                    <button class="btn btn-link px-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
+                            <form action="update-cart" method="post">
+                                <td><img src="<%=product.getImage()%>" alt="Handbag"></td>
+                                <td><%=product.getName()%></td>
+                                <td><%=product.getPrice()%></td>
+                                <td><input type="number" name="quantity" value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"></td>
+                                <td>$130.00</td>
+                            </form>
+                                <form action="RemoveCart" method="post">
+                                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+                                    <td><button class="remove" type="submit"><i class="bi bi-x-lg"></i></button></td>
+                                </form>
 
-                                    <input id="form1" min="0" name="quantity" type="number"
-                                           class="form-control form-control-sm" style="width: 50px;" />
-
-                                    <button class="btn btn-link px-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td class="align-middle">
-                                <p class="mb-0" style="font-weight: 500;">4.000.000</p>
-                            </td>
-                            <td class="align-middle border-bottom-0">
-                                <a href=""><i class="bi bi-x-lg" style="color: #BF1E2E;"></i></a>
-                            </td>
                         </tr>
 
                         </tbody>
                     </table>
+                    <div class="total">
+                        <p><%=product.getPrice()%></p>
+                    </div>
                 </div>
+                <%
+                        }
+                    }
+                %>
 
 
-            </div>
-        </div>
-    </div>
-</section>
+
 <a href="index.jsp">Continue Shopping</a>
 <footer style="background-color: #BF1E2E;">
     <div class="footer" style="display: flex;

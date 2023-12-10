@@ -1,5 +1,8 @@
 package com.hcmuaf.Product;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Product {
 
     private int id;
@@ -21,6 +24,15 @@ public class Product {
         this.quantity = quantity;
         this.price = price;
         this.cateID = cateID;
+    }
+    public Product(ResultSet rs) throws SQLException {
+        this.id = rs.getInt("id");
+        this.name = rs.getString("name");
+        this.image = rs.getString("image");
+        this.type = rs.getString("type");
+        this.quantity = rs.getInt("quantity");
+        this.price = rs.getDouble("price");
+        this.cateID = rs.getInt("cateID");
     }
 
     @Override

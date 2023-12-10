@@ -25,7 +25,7 @@
                     <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
