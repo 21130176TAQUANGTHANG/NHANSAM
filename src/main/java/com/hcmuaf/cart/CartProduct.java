@@ -53,5 +53,7 @@ public class CartProduct {
         }
         return true;
     }
-
+    public int getSubtotal(){
+        return product.getPrice() * quantity;
+    }
 }

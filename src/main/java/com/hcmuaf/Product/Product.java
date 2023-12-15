@@ -10,13 +10,13 @@ public class Product {
     private String image;
     private String type;
     private int quantity;
-    private double  price;
+    private int  price;
     private int cateID;
 
     public Product() {
     }
 
-    public Product(int id, String name, String image, String type, int quantity, double price, int cateID) {
+    public Product(int id, String name, String image, String type, int quantity, int price, int cateID) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -31,7 +31,7 @@ public class Product {
         this.image = rs.getString("image");
         this.type = rs.getString("type");
         this.quantity = rs.getInt("quantity");
-        this.price = rs.getDouble("price");
+        this.price = rs.getInt("price");
         this.cateID = rs.getInt("cateID");
     }
 
@@ -88,11 +88,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

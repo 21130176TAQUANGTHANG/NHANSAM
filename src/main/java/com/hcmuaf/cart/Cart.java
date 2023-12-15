@@ -57,4 +57,13 @@ public class Cart {
     public Map<Integer, CartProduct> getData() {
         return data;
     }
+
+    public int getTotalPrice(){
+        int total = 0;
+        for (CartProduct cartProduct : data.values()){
+            total += cartProduct.getSubtotal();
+        }
+        return total;
+    }
+
 }

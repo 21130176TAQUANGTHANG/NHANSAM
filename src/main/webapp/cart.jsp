@@ -121,7 +121,7 @@
                                 <td><%=product.getName()%></td>
                                 <td><%=product.getPrice()%></td>
                                 <td><input type="number" name="quantity" value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"></td>
-                                <td>$130.00</td>
+                                <td><%=cartProduct.getSubtotal()%></td>
                             </form>
                                 <form action="RemoveCart" method="post">
                                     <input type="hidden" name="productId" value="<%= product.getId() %>">
@@ -132,16 +132,16 @@
 
                         </tbody>
                     </table>
-                    <div class="total">
-                        <p><%=product.getPrice()%></p>
-                    </div>
+
                 </div>
                 <%
                         }
                     }
                 %>
 
-
+<div class="total">
+    <p><%=cart.getTotalPrice()%></p>
+</div>
 
 <a href="index.jsp">Continue Shopping</a>
 <footer style="background-color: #BF1E2E;">

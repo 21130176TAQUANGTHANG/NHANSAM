@@ -125,7 +125,7 @@ public class ControllerDAO {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getDouble(6),
+                        rs.getInt(6),
                         rs.getInt(7)
                 ));
             }
@@ -153,7 +153,7 @@ public class ControllerDAO {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getDouble(6),
+                        rs.getInt(6),
                         rs.getInt(7));
                 return p;
             }
@@ -182,7 +182,7 @@ public class ControllerDAO {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getDouble(6),
+                        rs.getInt(6),
                         rs.getInt(7)
                 ));
             }

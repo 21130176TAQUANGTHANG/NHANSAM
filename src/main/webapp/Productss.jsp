@@ -101,7 +101,7 @@
             List<Product> listP = dao.getAllProduct();
                 for (Product product : listP) {
         %>
-        <div class="product-ite">
+        <div class="product-ite">ddd
             <img src="<%= product.getImage()%>" alt="">
             <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
             <div class="buy">

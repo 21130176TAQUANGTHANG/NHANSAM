@@ -81,13 +81,63 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="img/bgg1.png" class="d-block w-100" alt="...">
+            <div class="product-ite">
+                <img src="img/namlinhxanh400g.png" alt="">
+                <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+                <div class="buy">
+                    <p>4.000.000 VND</p>
+                    <button type="button" class="btn-ginseng">Mua</button>
+                </div>
+            </div>
         </div>
         <div class="carousel-item">
-            <img src="img/bgg2.png" class="d-block w-100" alt="...">
+            <div class="product-ite">
+                <img src="img/namlinhxanh400g.png" alt="">
+                <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+                <div class="buy">
+                    <p>4.000.000 VND</p>
+                    <button type="button" class="btn-ginseng">Mua</button>
+                </div>
+            </div>
+            <div class="product-ite">
+                <img src="img/namlinhxanh400g.png" alt="">
+                <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+                <div class="buy">
+                    <p>4.000.000 VND</p>
+                    <button type="button" class="btn-ginseng">Mua</button>
+                </div>
+            </div><div class="product-ite">
+            <img src="img/namlinhxanh400g.png" alt="">
+            <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+            <div class="buy">
+                <p>4.000.000 VND</p>
+                <button type="button" class="btn-ginseng">Mua</button>
+            </div>
+        </div><div class="product-ite">
+            <img src="img/namlinhxanh400g.png" alt="">
+            <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+            <div class="buy">
+                <p>4.000.000 VND</p>
+                <button type="button" class="btn-ginseng">Mua</button>
+            </div>
+        </div><div class="product-ite">
+            <img src="img/namlinhxanh400g.png" alt="">
+            <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+            <div class="buy">
+                <p>4.000.000 VND</p>
+                <button type="button" class="btn-ginseng">Mua</button>
+            </div>
+        </div>
         </div>
         <div class="carousel-item">
-            <img src="img/bgg2.png" class="d-block w-100" alt="...">
+            <div class="product-ite">
+                <img src="img/namlinhxanh400g.png" alt="">
+                <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+                <div class="buy">
+                    <p>4.000.000 VND</p>
+                    <button type="button" class="btn-ginseng">Mua</button>
+                </div>
+            </div>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
