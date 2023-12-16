@@ -112,6 +112,7 @@
                 </div>
                 <div class="buy-item">
                     <a href="#"><i class="bi bi-cart"></i>add cart</a>
+                    <a href="../../add-cart?id=<%= product.getId(25)%>">Thêm vào giỏ hàng</a>
                 </div>
             </div>
 
