@@ -97,22 +97,34 @@
 <div class="tab_content">
     <div class="product-container" id="menu_1">
         <%
-            ControllerDAO dao = new ControllerDAO();
-            List<Product> listP = dao.getAllProduct();
-                for (Product product : listP) {
+       ControllerDAO dao = new ControllerDAO();
+    List<Product> pd = dao.getAllProduct();
+    for(Product product: pd){
+
         %>
-        <div class="product-ite">ddd
+
+        <div class="product-ite">
             <img src="<%= product.getImage()%>" alt="">
             <a href="<%=product.getType()%>"><p><%= product.getName()%></p></a>
             <div class="buy">
                 <p><%= product.getPrice()%></p>
                 <button type="button" class="btn-ginseng">Mua</button>
-                <a href="add-cart?id=<%= product.getId()%>">Add to Cart</a>
+                <%
+                    User us = (User) session.getAttribute("auth");
+                    if (us == null) {
+                %>
+                <a href="login.jsp">Thêm vào giỏ hàng</a>
+                <%
+                } else {
+                %>
+                <a href="add-cart?id=<%= product.getId()%>">Thêm vào giỏ hàng</a>
+                <%
+                    }
+                %>
             </div>
         </div>
         <%
-            }
-        %>
+            }%>
     </div>
 
 

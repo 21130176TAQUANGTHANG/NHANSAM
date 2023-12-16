@@ -18,12 +18,14 @@ public class ListProduct extends HttpServlet {
         ControllerDAO dao = new ControllerDAO();
         List<Product> list = dao.getAllProduct();
 
-       if(list==null && list.isEmpty()){
-           resp.sendRedirect("index.jsp");
-       }else{
-           HttpSession session = req.getSession();
-           session.setAttribute("listP",list);
-           resp.sendRedirect("Productss.jsp");
-       }
+        if(list != null ){
+            HttpSession session = req.getSession();
+            session.setAttribute("listProduct",list);
+            req.getServletContext().getRequestDispatcher("Productss.jsp").forward(req,resp);
+
+        }else{
+            resp.sendRedirect("index.jsp");
+        }
+
     }
 }
