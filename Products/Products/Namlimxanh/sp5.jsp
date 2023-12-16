@@ -98,7 +98,7 @@
         <div class="information-product">
             <div class="information-buy">
 
-                <h2>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g</h2>
+                <h2>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại 2 bịch 0,5kg</h2>
                 <p>Tình trạng: <b>Còn hàng</b></p>
                 <p>Thương hiệu: <b style="color: #BF1E2E"> Nấm lim xanh Quảng Nam</b> </p>
                 <p>Xuất xứ: Việt Nam</p>
@@ -116,6 +116,7 @@
                 </div>
                 <div class="buy-item">
                     <a href="#"><i class="bi bi-cart"></i>add cart</a>
+                    <a href="../../add-cart?id=<%= product.getId(5)%>">Thêm vào giỏ hàng</a>
                 </div>
             </div>
 
