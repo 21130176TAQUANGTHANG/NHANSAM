@@ -92,14 +92,14 @@
     </div>
 </header>
 
-%>
+
 <div class="tab_content">
     <div class="product-container" id="menu_1">
         <%
-       ControllerDAO dao = new ControllerDAO();
-    List<Product> pd = dao.getAllProduct();
-    for(Product product: pd){
-
+          Product products = (Product) request.getAttribute("listP");
+          List<Product> list = (List<Product>) products;
+            if(list !=null){
+            for(Product product: list){
         %>
 
         <div class="product-ite">
@@ -122,7 +122,7 @@
                 %>
             </div>
         </div>
-        <%
+        <%}
             }%>
     </div>
 
