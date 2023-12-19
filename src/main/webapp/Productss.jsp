@@ -15,7 +15,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Productss.sp</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -95,11 +95,19 @@
 
 <div class="tab_content">
     <div class="product-container" id="menu_1">
+
         <%
-          Product products = (Product) request.getAttribute("listP");
-          List<Product> list = (List<Product>) products;
-            if(list !=null){
-            for(Product product: list){
+            String searchText = request.getParameter("searchText");
+            List<Product> list;
+            ControllerDAO dao = new ControllerDAO();
+            if (searchText != null && !searchText.isEmpty()) {
+                list = dao.searchByName(searchText);
+            } else {
+                list = dao.getAllProduct();
+            }
+        %>
+        <%
+            for (Product product : list) {
         %>
 
         <div class="product-ite">
@@ -123,7 +131,7 @@
             </div>
         </div>
         <%}
-            }%>
+            %>
     </div>
 
 

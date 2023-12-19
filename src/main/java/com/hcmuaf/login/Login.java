@@ -1,6 +1,5 @@
 package com.hcmuaf.login;
 
-import com.hcmuaf.Mail.Mail;
 import com.hcmuaf.db.ControllerDAO;
 
 import javax.servlet.ServletException;
@@ -31,7 +30,7 @@ public class Login extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("auth", a);
                 response.sendRedirect("index.jsp");
-                Mail.sendMail(username,"Heloo bro", "you are handsoe");
+//                Mail.sendMail(username,"Heloo bro", "you are handsoe");
             }
         }
     }

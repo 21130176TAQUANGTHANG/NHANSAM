@@ -31,6 +31,7 @@ public class AddCartController extends HttpServlet {
        if(quantity <= 0) quantity=1;
        cart.add(id,quantity);
        session.setAttribute("cart",cart);
+       session.setAttribute("totalPrice", cart.getTotalPrice());
 
         resp.sendRedirect("Productss.jsp");
     }

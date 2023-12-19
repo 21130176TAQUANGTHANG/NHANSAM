@@ -25,16 +25,6 @@ public class Cart {
         return true;
 
     }
-//    public boolean update(int proid, int quantity){
-//        if(!data.containsKey(proid)){
-//            return false;
-//        }
-//        CartProduct cartProduct = data.get(proid);
-//        if(quantity <= 0 || quantity > cartProduct.product.getQuantity())
-//            return false;
-//        data.get(proid).setQuantity(quantity);
-//        return true;
-//    }
 
     public boolean update(int proid, int quantity) {
         if (!data.containsKey(proid)) {
@@ -47,6 +37,8 @@ public class Cart {
         cartProduct.setQuantity(quantity);
         return true;
     }
+
+
 
     public void remove(int proid) {
         data.remove(proid);

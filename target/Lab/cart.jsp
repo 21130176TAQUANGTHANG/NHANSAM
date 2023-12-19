@@ -98,14 +98,19 @@
                 <p>Giỏ hàng của bạn trống. Vui lòng thêm sản phẩm vào giỏ hàng</p>
                 <%
                 } else {
+                    int totalPriceForAllProducts = 0;
+
                     for (Map.Entry<Integer, CartProduct> entry : cartItems.entrySet()) {
                         CartProduct cartProduct = entry.getValue();
                         Product product = cartProduct.getProduct();
+                        totalPriceForAllProducts += cartProduct.getSubtotal();
+
                 %>
                 <div class="shopping-cart">
                     <table id="table-shopping">
                         <thead>
                         <tr class="text-cart">
+                            <th></th>
                             <th>Image</th>
                             <th>Product</th>
                             <th>Price</th>
@@ -116,17 +121,25 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <form action="update-cart" method="post">
-                                <td><img src="<%=product.getImage()%>" alt="Handbag"></td>
-                                <td><%=product.getName()%></td>
-                                <td><%=product.getPrice()%></td>
-                                <td><input type="number" name="quantity" value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"></td>
-                                <td><%=cartProduct.getSubtotal()%></td>
-                            </form>
-                                <form action="RemoveCart" method="post">
+                            <form action="Cart-Controller" method="post" onsubmit="return updateCart(<%= product.getId() %>)">
+                                <td><button type="submit">UPDATA</button></td>
+                                <td><img src="<%= product.getImage()%>" alt="Handbag"></td>
+                                <td><%= product.getName()%></td>
+                                <td><%= product.getPrice()%></td>
+<%--                                <td>--%>
+<%--                                    <input type="number" name="quantity" value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;" onchange="updateCart(<%= product.getId() %>, this.value)">--%>
+<%--                                </td>--%>
+                                <td>
+                                    <input type="number" name="quantity" id="quantity_<%= product.getId() %>"
+                                           value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"
+                                           onchange="updateTotal(<%= product.getPrice() %>, <%= product.getId() %>)">
+                                </td>
+                                <td><%= cartProduct.getSubtotal()%></td>
+                                <td>
                                     <input type="hidden" name="productId" value="<%= product.getId() %>">
-                                    <td><button class="remove" type="submit"><i class="bi bi-x-lg"></i></button></td>
-                                </form>
+                                    <button class="remove" type="submit"><i class="bi bi-x-lg"></i></button>
+                                </td>
+                            </form>
 
                         </tr>
 
@@ -136,12 +149,19 @@
                 </div>
                 <%
                         }
+                        session.setAttribute("totalPriceForAllProducts", totalPriceForAllProducts);
                     }
                 %>
 
+<%--<div class="total">--%>
+<%--    <p>Tổng giá: <%= session.getAttribute("totalPrice") %></p>--%>
+<%--</div>--%>
 <div class="total">
-    <p><%=cart.getTotalPrice()%></p>
+    <p>Tổng giá cho Tất cả Sản phẩm: <%= session.getAttribute("totalPriceForAllProducts") %></p>
 </div>
+
+
+
 
 <a href="index.jsp">Continue Shopping</a>
 <footer style="background-color: #BF1E2E;">
@@ -203,5 +223,19 @@
 
     </div>
 </footer>
+<script>
+    function updateTotal(price, productId) {
+        const quantity = document.getElementById(`quantity_${productId}`).value;
+        const subtotalElement = document.getElementById(`subtotal_${productId}`);
+        const subtotal = price * quantity;
+        subtotalElement.textContent = subtotal;
+    }
+
+    function updateCart(productId) {
+        // Additional logic if needed before submitting the form
+        return true; // Returning true to submit the form
+    }
+</script>
+
 </body>
 </html>

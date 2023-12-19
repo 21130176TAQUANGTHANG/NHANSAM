@@ -14,16 +14,26 @@ public class CartController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String productIdParam = request.getParameter("productId");
+        String quantityParam = request.getParameter("quantity");
 
-        HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart != null) {
-            cart.update(productId, quantity);
-            session.setAttribute("cart", cart);
+        if (productIdParam != null && quantityParam != null) {
+            try {
+                int productId = Integer.parseInt(productIdParam);
+                int quantity = Integer.parseInt(quantityParam);
+
+                HttpSession session = request.getSession();
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart != null && cart.update(productId, quantity)) {
+                    session.setAttribute("cart", cart);
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace(); // Xử lý ngoại lệ một cách phù hợp
+            }
         }
 
         response.sendRedirect("cart.jsp");
     }
+
+
 }

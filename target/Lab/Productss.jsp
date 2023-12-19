@@ -4,8 +4,6 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="com.hcmuaf.cart.Cart" %>
 <%@ page import="com.hcmuaf.db.ControllerDAO" %>
-<%@ page import="com.hcmuaf.cart.CartProduct" %>
-<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: thang
@@ -17,7 +15,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Productss.sp</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -94,13 +92,22 @@
     </div>
 </header>
 
+
 <div class="tab_content">
     <div class="product-container" id="menu_1">
-        <%
-       ControllerDAO dao = new ControllerDAO();
-    List<Product> pd = dao.getAllProduct();
-    for(Product product: pd){
 
+        <%
+            String searchText = request.getParameter("searchText");
+            List<Product> list;
+            ControllerDAO dao = new ControllerDAO();
+            if (searchText != null && !searchText.isEmpty()) {
+                list = dao.searchByName(searchText);
+            } else {
+                list = dao.getAllProduct();
+            }
+        %>
+        <%
+            for (Product product : list) {
         %>
 
         <div class="product-ite">
@@ -123,8 +130,8 @@
                 %>
             </div>
         </div>
-        <%
-            }%>
+        <%}
+            %>
     </div>
 
 
