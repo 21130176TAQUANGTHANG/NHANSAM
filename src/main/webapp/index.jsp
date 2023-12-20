@@ -10,7 +10,80 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+
 </head>
+<style>
+
+    .direction{
+        text-align: center;
+    }
+    .direction button{
+        font-family: cursive;
+        font-weight: bold;
+        background-color: #ffffff44;
+        border:none;
+        width:50px;
+        height:50px;
+        border-radius: 50%;
+        transition: 0.5s;
+        margin:0 10px;
+    }
+    .direction button:hover{
+        background-color: #ffffff;
+    }
+    .item{
+        border-radius: 15px;
+        width:300px;
+        height:500px;
+        overflow: hidden;
+        transition: 0.5s;
+        margin:10px;
+        scroll-snap-align: start;
+    }
+    .item .content table td{
+        padding:10px 0;
+        border-bottom: 1px solid #AEC0CE;
+    }
+    .item .content table td:nth-child(2){
+        text-align: right;
+    }
+    .item .nameGroup{
+        text-align: center;
+        border-bottom:none!important;
+    }
+    #list{
+        display: flex;
+        width:max-content;
+    }
+    #formList{
+        width:1280px;
+        max-width: 100%;
+        overflow: auto;
+        margin:100px auto 50px;
+        scroll-behavior: smooth;
+        scroll-snap-type: both;
+    }
+    #formList::-webkit-scrollbar{
+        display: none;
+    }
+    @media screen and (max-width: 1024px){
+        .item{
+            width: calc(33.3vw - 20px);
+        }
+        .direction{
+            display: none;
+        }
+    }
+    @media screen and (max-width: 768px){
+        .item{
+            width: calc(50vw - 20px);
+        }
+        .direction{
+            display: none;
+        }
+    }
+
+</style>
 <body>
 <header id="header">
     <div class="header-menu">
@@ -71,27 +144,35 @@
         </div>
     </div>
 </header>
+<%-------------------------------Card Slider--------------------------------%>
 
+<div id="formList">
+    <div id="list">
+        <div class="item">
+            <div class="product-ite" style="width: auto">
+                <img src="img/namlinhxanh400g.png" alt="">
+                <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+                <div class="buy">
+                    <p>4.000.000 VND</p>
+                    <button type="button" class="btn-ginseng">Mua</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
 
-<div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
                     <p>4.000.000 VND</p>
                     <button type="button" class="btn-ginseng">Mua</button>
                 </div>
+
             </div>
         </div>
-        <div class="carousel-item">
-            <div class="product-ite">
+        <div class="item">
+
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
@@ -99,38 +180,23 @@
                     <button type="button" class="btn-ginseng">Mua</button>
                 </div>
             </div>
-            <div class="product-ite">
+
+        </div>
+        <div class="item">
+
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
                     <p>4.000.000 VND</p>
                     <button type="button" class="btn-ginseng">Mua</button>
                 </div>
-            </div><div class="product-ite">
-            <img src="img/namlinhxanh400g.png" alt="">
-            <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
-            <div class="buy">
-                <p>4.000.000 VND</p>
-                <button type="button" class="btn-ginseng">Mua</button>
-            </div>
-        </div><div class="product-ite">
-            <img src="img/namlinhxanh400g.png" alt="">
-            <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
-            <div class="buy">
-                <p>4.000.000 VND</p>
-                <button type="button" class="btn-ginseng">Mua</button>
-            </div>
-        </div><div class="product-ite">
-            <img src="img/namlinhxanh400g.png" alt="">
-            <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
-            <div class="buy">
-                <p>4.000.000 VND</p>
-                <button type="button" class="btn-ginseng">Mua</button>
+
             </div>
         </div>
-        </div>
-        <div class="carousel-item">
-            <div class="product-ite">
+        <div class="item">
+
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
@@ -138,19 +204,40 @@
                     <button type="button" class="btn-ginseng">Mua</button>
                 </div>
             </div>
+
+        </div>
+        <div class="item">
+
+            <div class="product-ite" style="width: auto">
+                <img src="img/namlinhxanh400g.png" alt="">
+                <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
+                <div class="buy">
+                    <p>4.000.000 VND</p>
+                    <button type="button" class="btn-ginseng">Mua</button>
+                </div>
+            </div>
+
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </div>
 
 
+<div class="direction">
+    <button id="prev"> < </button>
+    <button id="next"> > </button>
+</div>
+
+<script>
+    document.getElementById('next').onclick = function(){
+        const widthItem = document.querySelector('.item').offsetWidth;
+        document.getElementById('formList').scrollLeft += widthItem;
+    }
+    document.getElementById('prev').onclick = function(){
+        const widthItem = document.querySelector('.item').offsetWidth;
+        document.getElementById('formList').scrollLeft -= widthItem;
+    }
+</script>
+<%-------------------------------Card Slider--------------------------------%>
 <div class="product-sell">
     <div class="text-seller">
         <h2 style="text-align: center;padding: 20px;color: red;">Sản phẩm bán chạy</h2>
@@ -629,71 +716,6 @@
 
 </script>
 <!-- Add this script to your HTML file -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const addToCartButtons = document.querySelectorAll('.btn-ginseng');
-
-        addToCartButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                addToCart(button);
-            });
-        });
-
-        function addToCart(button) {
-            const productItem = button.closest('.product-ite');
-            const productName = productItem.querySelector('p').textContent;
-            const productPrice = parseFloat(productItem.querySelector('.buy p').textContent.replace('VND', '').replace(',', '').trim());
-
-            const cartTableBody = document.querySelector('.table tbody');
-            const newRow = cartTableBody.insertRow();
-
-            const cellId = newRow.insertCell(0);
-            const cellProduct = newRow.insertCell(1);
-            const cellQuantity = newRow.insertCell(2);
-            const cellPrice = newRow.insertCell(3);
-            const cellRemove = newRow.insertCell(4);
-
-            cellId.textContent = cartTableBody.rows.length;
-            cellProduct.innerHTML = `
-                <div class="d-flex align-items-center">
-                    <img src="${productItem.querySelector('img').src}" style="width: 200px; height: 190px;" class="img-fluid rounded-3">
-                    <div class="flex-column ms-4">
-                        <p>${productName}</p>
-                    </div>
-                </div>`;
-            cellQuantity.innerHTML = `
-                <div class="d-flex flex-row">
-                    <button class="btn btn-link px-2" onclick="updateQuantity(this, -1)">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <input min="0" name="quantity" type="number" class="form-control form-control-sm" style="width: 50px;" value="1">
-                    <button class="btn btn-link px-2" onclick="updateQuantity(this, 1)">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                </div>`;
-            cellPrice.textContent = formatCurrency(productPrice);
-            cellRemove.innerHTML = `<a href="#" onclick="removeItem(this)"><i class="bi bi-x-lg" style="color: #BF1E2E;"></i></a>`;
-        }
-
-        function updateQuantity(button, increment) {
-            const quantityInput = button.parentNode.querySelector('input[type=number]');
-            let quantity = parseInt(quantityInput.value) + increment;
-            if (quantity < 0) {
-                quantity = 0;
-            }
-            quantityInput.value = quantity;
-        }
-
-        function removeItem(link) {
-            const row = link.closest('tr');
-            row.parentNode.removeChild(row);
-        }
-
-        function formatCurrency(value) {
-            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
-        }
-    });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
