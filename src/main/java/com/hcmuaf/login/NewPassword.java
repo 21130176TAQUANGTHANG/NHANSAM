@@ -30,13 +30,18 @@ public class NewPassword extends HttpServlet {
             boolean passwordUpdated = controllerDAO.updatePassword(newPassword, email);
 
             if (passwordUpdated) {
-                dispatcher = request.getRequestDispatcher("CodeOTP.jsp");
+                dispatcher = request.getRequestDispatcher("login.jsp");
             } else {
-                request.setAttribute("message", "Failed to update password. Please try again.");
-                dispatcher = request.getRequestDispatcher("ErrorPage.jsp");
+                request.setAttribute("message", "Cập nhật mật khẩu thất bại. Vui lòng thử lại.");
+                dispatcher = request.getRequestDispatcher("UpdataPassword.jsp");
             }
         } else {
-            request.setAttribute("message", "Passwords do not match.");
+            // Xử lý khi mật khẩu không khớp hoặc không đạt độ dài yêu cầu
+            if (!newPassword.equals(confPassword)) {
+                request.setAttribute("message", "Mật khẩu không khớp.");
+            } else {
+                request.setAttribute("message", "Độ dài mật khẩu phải ít nhất 8 ký tự.");
+            }
             dispatcher = request.getRequestDispatcher("UpdataPassword.jsp");
         }
 

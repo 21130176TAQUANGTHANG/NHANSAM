@@ -33,7 +33,7 @@ public class ValidateOTP extends HttpServlet {
         }
         else
         {
-            req.setAttribute("message","wrong otp");
+            req.setAttribute("message","Sai mã OTP");
 
             dispatcher=req.getRequestDispatcher("CodeOTP.jsp");
             dispatcher.forward(req, resp);

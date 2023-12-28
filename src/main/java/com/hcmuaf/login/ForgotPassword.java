@@ -52,7 +52,7 @@ public class ForgotPassword extends HttpServlet {
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(email));// change accordingly
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject("Xin chào ban nhá");
+                message.setSubject("Xin chào bạn nhá");
                 message.setText("Hãy lấy mã OTP này đi: " + otpvalue);
                 // send message
                 Transport.send(message);
@@ -63,7 +63,7 @@ public class ForgotPassword extends HttpServlet {
                 throw new RuntimeException(e);
             }
             dispatcher = request.getRequestDispatcher("CodeOTP.jsp");
-            request.setAttribute("message","OTP is sent to your email id");
+            request.setAttribute("message","Mã OTP đã được gửi vào email");
             //request.setAttribute("connection", con);
             mySession.setAttribute("otp",otpvalue);
             mySession.setAttribute("email",email);

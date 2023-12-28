@@ -104,14 +104,17 @@
             <div class="submit">
                 <button type="submit">Đăng nhập</button>
             </div>
+
+            <div class="password">
+                <a href="forgotPassword.jsp">Quên mật khẩu</a>
+            </div>
+
             <div class="sign_up">
                 <p>Nếu mà chưa có tài khoản</p>
                 <i class="bi bi-arrow-right"></i>
                 <a href="sign-up.jsp">Đăng ký</a>
             </div>
-            <div class="password">
-                <a href="verifyCode.jsp">Quên mật khẩu</a>
-            </div>
+
         </form>
     </div>
 
