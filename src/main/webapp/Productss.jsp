@@ -4,6 +4,7 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="com.hcmuaf.cart.Cart" %>
 <%@ page import="com.hcmuaf.db.ControllerDAO" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: thang
@@ -92,7 +93,6 @@
     </div>
 </header>
 
-
 <div class="tab_content">
     <div class="product-container" id="menu_1">
 
@@ -136,6 +136,8 @@
 
 
 </div>
+
+
 
 
 <footer style="background-color: #BF1E2E;">

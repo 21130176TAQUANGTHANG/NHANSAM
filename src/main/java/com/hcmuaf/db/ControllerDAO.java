@@ -17,6 +17,26 @@ public class ControllerDAO {
     ResultSet rs= null;
 
 
+    public boolean updatePassword(String password, String username) {
+        try {
+            String sql = "UPDATE `users` SET `password` = ? WHERE username = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, password);
+            ps.setString(2, username);
+
+            // Sử dụng executeUpdate cho các câu truy vấn UPDATE, INSERT, DELETE
+            int rowsAffected = ps.executeUpdate();
+
+            // Kiểm tra xem có dòng nào bị ảnh hưởng hay không
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating password", e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<User> getAllAccount(){
         List<User>list=new ArrayList<>();
         String query = "SELECT * FROM users";
@@ -69,6 +89,8 @@ public class ControllerDAO {
         }
         return null;
     }
+
+
     public User checkLoginExist( String username){
         String query="SELECT*FROM users WHERE username=?";
         try {
@@ -129,15 +151,14 @@ public class ControllerDAO {
                         rs.getInt(7)
                 ));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
-            // Đóng tài nguyên ở đây
         }
+
         return list;
     }
+
+
 
 
     public Product getById(int proid){

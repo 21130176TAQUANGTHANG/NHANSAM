@@ -109,6 +109,9 @@
                 <i class="bi bi-arrow-right"></i>
                 <a href="sign-up.jsp">Đăng ký</a>
             </div>
+            <div class="password">
+                <a href="forgotPassword.jsp">Quên mật khẩu</a>
+            </div>
         </form>
     </div>
 

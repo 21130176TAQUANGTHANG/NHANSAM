@@ -160,7 +160,7 @@
         </div>
         <div class="item">
 
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
@@ -172,7 +172,7 @@
         </div>
         <div class="item">
 
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
@@ -184,7 +184,7 @@
         </div>
         <div class="item">
 
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
@@ -196,7 +196,7 @@
         </div>
         <div class="item">
 
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">
@@ -208,7 +208,7 @@
         </div>
         <div class="item">
 
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="img/namlinhxanh400g.png" alt="">
                 <a href="Products/Namlimxanh/sp1.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại đặc biệt tai nấm to hộp 400g </p></a>
                 <div class="buy">

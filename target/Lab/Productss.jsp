@@ -4,6 +4,7 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="com.hcmuaf.cart.Cart" %>
 <%@ page import="com.hcmuaf.db.ControllerDAO" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: thang
@@ -15,7 +16,7 @@
 
 <html>
 <head>
-    <title>Productss.sp</title>
+    <title>Productss.jsp</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -92,7 +93,6 @@
     </div>
 </header>
 
-
 <div class="tab_content">
     <div class="product-container" id="menu_1">
 
@@ -136,6 +136,8 @@
 
 
 </div>
+
+
 
 
 <footer style="background-color: #BF1E2E;">

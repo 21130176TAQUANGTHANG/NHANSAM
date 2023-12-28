@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>card.jsp</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -152,6 +152,17 @@
                         session.setAttribute("totalPriceForAllProducts", totalPriceForAllProducts);
                     }
                 %>
+<%
+
+    int totalQuantity = cart.getTotal(); // Số sản phẩm trong giỏ hàng
+    int totalPrice = cart.getTotalPrice(); // Tổng tiền
+
+    // Lưu thông tin giỏ hàng vào session
+    session.setAttribute("totalQuantity", totalQuantity);
+    session.setAttribute("totalPrice", totalPrice);
+
+
+%>
 
 <%--<div class="total">--%>
 <%--    <p>Tổng giá: <%= session.getAttribute("totalPrice") %></p>--%>
@@ -161,7 +172,9 @@
 </div>
 
 
-
+<div class="checkout">
+    <a href="checkout.jsp">Thanh Toán</a>
+</div>
 
 <a href="index.jsp">Continue Shopping</a>
 <footer style="background-color: #BF1E2E;">
