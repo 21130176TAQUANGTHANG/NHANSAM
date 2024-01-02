@@ -332,7 +332,7 @@
 
         // Kiểm tra checkbox
         var checkbox = document.getElementById("flexCheckDefault");
-        
+
         // Kiểm tra nếu có trường nào chưa nhập thông tin
         if (fullName === "" || phone === "" || email === "" || address === "" || city === "" || district === "") {
             alert("Vui lòng nhập đầy đủ thông tin.");
