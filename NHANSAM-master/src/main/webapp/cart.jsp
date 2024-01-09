@@ -20,6 +20,39 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/shoppingcart.css">
 </head>
+<style>
+    .emptycart{
+    height: 300px;
+    width: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+    .emptycart a {
+        margin: 20px 0 0 0;
+        padding: 20px;
+        text-decoration: none;
+        color: red;
+        font-size: 20px;
+    }
+    .totalp{
+        display: flex;
+        justify-content: space-between;
+        margin: 50px;
+    }
+    .checkout a{
+            padding: 20px;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            border: 1px solid black
+    }
+    .checkout a:hover{
+        background-color: crimson;
+    }
+
+</style>
 <body>
 <header id="header">
     <div class="header-menu">
@@ -71,7 +104,6 @@
     font-size: 20px;">Đăng nhập</a>
                 <% } else { %>
                 <p>Chào bạn: <%= auth.getFullname() %> </p>
-                <a href="History.jsp">Lịch sử mua hàng</a>
                 <a href="logout.jsp">Đăng xuất</a>
                 <% } %>
             </div>
@@ -83,80 +115,88 @@
 </header>
 
 
-                <%
-                    Cart cart = (Cart) session.getAttribute("cart");
-                    if (cart == null)
-                        cart = new Cart();
-
-                    Map<Integer, CartProduct> cartItems = cart.getData();
-                %>
-
-                <h2>Giỏ hàng của bản:</h2>
-
-                <%
-                    if (cartItems.isEmpty()) {
-                %>
-                <p>Giỏ hàng của bạn trống. Vui lòng thêm sản phẩm vào giỏ hàng</p>
-                <%
-                } else {
-                    int totalPriceForAllProducts = 0;
-
-                    for (Map.Entry<Integer, CartProduct> entry : cartItems.entrySet()) {
-                        CartProduct cartProduct = entry.getValue();
-                        Product product = cartProduct.getProduct();
-                        totalPriceForAllProducts += cartProduct.getSubtotal();
-
-                %>
-                <div class="shopping-cart">
-                    <table id="table-shopping">
-                        <thead>
-                        <tr class="text-cart">
-                            <th></th>
-                            <th>Image</th>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <form action="Cart-Controller" method="post" onsubmit="return updateCart(<%= product.getId() %>)">
-                                <td><button type="submit">UPDATA</button></td>
-                                <td><img src="<%= product.getImage()%>" alt="Handbag"></td>
-                                <td><%= product.getName()%></td>
-                                <td><%= product.getPrice()%></td>
-<%--                                <td>--%>
-<%--                                    <input type="number" name="quantity" value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;" onchange="updateCart(<%= product.getId() %>, this.value)">--%>
-<%--                                </td>--%>
-                                <td>
-                                    <input type="number" name="quantity" id="quantity_<%= product.getId() %>"
-                                           value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"
-                                           onchange="updateTotal(<%= product.getPrice() %>, <%= product.getId() %>)">
-                                </td>
-                                <td><%= cartProduct.getSubtotal()%></td>
-                            </form>
-                            <form action="RemoveCart" method="post">
-                                <td>
-                                    <input type="hidden" name="productId" value="<%= product.getId() %>">
-                                    <button class="remove" type="submit"><i class="bi bi-x-lg"></i></button>
-                                </td>
-                            </form>
-
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>
-                <%
-                        }
-                        session.setAttribute("totalPriceForAllProducts", totalPriceForAllProducts);
-                    }
-                %>
 <%
+    Cart cart = (Cart) session.getAttribute("cart");
+    if (cart == null)
+        cart = new Cart();
 
+    Map<Integer, CartProduct> cartItems = cart.getData();
+%>
+
+<h2 style="padding: 20px 0 50px 100px;">Giỏ hàng của bản:</h2>
+
+<%
+    if (cartItems.isEmpty()) {
+%>
+<div class="emptycart">
+    <p style="font-size: 30px;">Giỏ hàng của bạn trống. Vui lòng thêm sản phẩm vào giỏ hàng</p>
+    <a href="Productss.jsp"><i class="bi bi-arrow-return-right" style="color: red;padding-right: 20px;"></i>Mua sản phẩm<i class="bi bi-arrow-return-left" style="color: red;padding-left: 20px;"></i></a>
+</div>
+
+<%
+} else {
+    int totalPriceForAllProducts = 0;
+
+    for (Map.Entry<Integer, CartProduct> entry : cartItems.entrySet()) {
+        CartProduct cartProduct = entry.getValue();
+        Product product = cartProduct.getProduct();
+        totalPriceForAllProducts += cartProduct.getSubtotal();
+
+%>
+<div class="shopping-cart">
+    <table id="table-shopping">
+        <thead>
+        <tr class="text-cart">
+            <th></th>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <form action="Cart-Controller" method="post" onsubmit="return updateCart(<%= product.getId() %>)">
+                <td><button type="submit">UPDATA</button></td>
+                <td><img src="<%= product.getImage()%>" alt="Handbag"></td>
+                <td><%= product.getName()%></td>
+                <td><%= product.getPrice()%></td>
+
+                <td>
+                    <input type="number" name="quantity" id="quantity_<%= product.getId() %>"
+                           value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"
+                           onchange="updateTotal(<%= product.getPrice() %>, <%= product.getId() %>)">
+                </td>
+                <td><%= cartProduct.getSubtotal()%></td>
+                <td>
+                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+                    <button class="remove" type="submit"><i class="bi bi-x-lg"></i></button>
+                </td>
+            </form>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+<% session.setAttribute("totalPriceForAllProducts", totalPriceForAllProducts);
+    } %>
+<div class="totalp">
+    <div class="checkout">
+        <a href="checkout.jsp">Thanh Toán</a>
+        <a href="index.jsp">Continue Shopping</a>
+    </div>
+    <div class="totalpro">
+        <p>Tổng giá cho Tất cả Sản phẩm: <%= session.getAttribute("totalPriceForAllProducts") %></p>
+    </div>
+</div>
+   <% }
+%>
+
+<%
     int totalQuantity = cart.getTotal(); // Số sản phẩm trong giỏ hàng
     int totalPrice = cart.getTotalPrice(); // Tổng tiền
 
@@ -164,22 +204,9 @@
     session.setAttribute("totalQuantity", totalQuantity);
     session.setAttribute("totalPrice", totalPrice);
 
-
 %>
 
-<%--<div class="total">--%>
-<%--    <p>Tổng giá: <%= session.getAttribute("totalPrice") %></p>--%>
-<%--</div>--%>
-<div class="total">
-    <p>Tổng giá cho Tất cả Sản phẩm: <%= session.getAttribute("totalPriceForAllProducts") %></p>
-</div>
 
-
-<div class="checkout">
-    <a href="checkout.jsp">Thanh Toán</a>
-</div>
-
-<a href="index.jsp">Continue Shopping</a>
 <footer style="background-color: #BF1E2E;">
     <div class="footer" style="display: flex;
     justify-content: space-around;

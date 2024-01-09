@@ -15,7 +15,7 @@
 
 <nav class="admin-nav">
     <a href="index.jsp">Trang chủ</a>
-    <a href="#">Dashboard</a>
+    <a href="#"> Biểu đồ bán hàng</a>
     <a href="adminUSER.jsp">Users</a>
     <a href="adminPRODUCT.jsp">Products</a>
     <a href="#">Settings</a>
