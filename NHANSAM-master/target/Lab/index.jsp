@@ -104,7 +104,7 @@
                     <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                    <a class="nav-link" href="policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>

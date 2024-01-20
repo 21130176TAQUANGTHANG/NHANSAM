@@ -1,13 +1,12 @@
 package com.hcmuaf.db;
 
 import com.hcmuaf.Product.Category;
+import com.hcmuaf.Product.OrderDetail;
+import com.hcmuaf.Product.OrderProduct;
 import com.hcmuaf.Product.Product;
 import com.hcmuaf.login.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,6 +132,72 @@ public class ControllerDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public int historyProduct(OrderProduct orderProduct){
+        String sql = "INSERT INTO orderproduct(name, phone,email,address,district, city, total) VALUES(?,?,?,?,?,?,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, orderProduct.getName());
+            ps.setString(2, orderProduct.getPhone());
+            ps.setString(3, orderProduct.getEmail());
+            ps.setString(4, orderProduct.getAddress());
+            ps.setString(5, orderProduct.getDistrict());
+            ps.setString(6, orderProduct.getCity());
+            ps.setDouble(7,orderProduct.getTotal());
+            ps.executeUpdate();
+
+            try (ResultSet rss = ps.getGeneratedKeys()) {
+                if (rss.next()) {
+                    return rss.getInt(1);
+                }
+                rss.close();
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+
+    }
+
+    public void OrderDetail(OrderDetail orderDetail){
+        String query = "INSERT INTO odersdetail(product_id, order_id, quantity, price) VALUES(?, ?, ?, ?)";
+        try {
+            conn= new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1,orderDetail.getProduct_id());
+            ps.setInt(2,orderDetail.getOrder_id());
+            ps.setInt(3,orderDetail.getQuantity());
+            ps.setDouble(4,orderDetail.getTotal());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+    public void oderDetail(OrderDetail orderDetail){
+        String sql = "INSERT INTO orderdetail(product_id, order_id, quantity,price) VALUES(?,?,?,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1, orderDetail.getOrder_id());
+            ps.setObject(2, orderDetail.getOrder_id());
+            ps.setObject(3, orderDetail.getQuantity());
+            ps.setObject(4, orderDetail.getTotal());
+
+            ps.executeQuery();
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public List<Product> getAllProduct() {
         List<Product> list = new ArrayList<>();
         String query = "SELECT * FROM products";
