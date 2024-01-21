@@ -127,7 +127,7 @@
                             ControllerDAO db = new ControllerDAO();
                             Product product = db.getById(1);
                         %>
-                    <a href="../../add-cart?id=<%= product.getId()%>">Thêm vào giỏ hàng</a>
+                    <a href="../../add-cart?id=<%= product.getId(1)%>">Thêm vào giỏ hàng</a>
 
                 </div>
             </div>
