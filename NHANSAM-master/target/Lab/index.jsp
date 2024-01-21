@@ -101,7 +101,7 @@
                     <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">Giỏ hàng</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>

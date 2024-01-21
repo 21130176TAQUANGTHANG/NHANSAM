@@ -13,15 +13,20 @@
 <body>
 
 <header>
-    <h1>Chào mừng đến trang admin</h1>
+    <% User auth = (User) session.getAttribute("auth"); %>
+    <% if(auth == null){ %>
+    <h1>Trang adin</h1>
+    <% } else { %>
+    <h1>Trang giành cho quản trị viên</h1>
+    <p>Chào bạn: <%= auth.getFullname() %> </p>
+    <% } %>
 </header>
 
 <nav class="admin-nav">
     <a href="index.jsp">Trang chủ</a>
-    <a href="#">Dashboard</a>
-    <a href="adminUSER.jsp">Users</a>
-    <a href="adminPRODUCT.jsp">Products</a>
-    <a href="#">Settings</a>
+    <a href="#">Biểu đồ</a>
+    <a href="adminUSER.jsp">Tài khoản người dùng</a>
+    <a href="adminPRODUCT.jsp">Sản phẩm</a>
 </nav>
 
 <section>

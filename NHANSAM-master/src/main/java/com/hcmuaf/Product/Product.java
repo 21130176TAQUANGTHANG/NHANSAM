@@ -25,6 +25,16 @@ public class Product {
         this.price = price;
         this.cateID = cateID;
     }
+
+    public Product(String name, String image, int quantity, int price, int cateID) {
+        this.name = name;
+        this.image = image;
+        this.type = type;
+        this.quantity = quantity;
+        this.price = price;
+        this.cateID = cateID;
+    }
+
     public Product(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");

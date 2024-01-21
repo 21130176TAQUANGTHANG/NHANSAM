@@ -178,25 +178,53 @@ public class ControllerDAO {
     }
 
 
-
-    public void oderDetail(OrderDetail orderDetail){
-        String sql = "INSERT INTO orderdetail(product_id, order_id, quantity,price) VALUES(?,?,?,?)";
+    public void addProduct(Product product){
+        String sql = "INSERT INTO products(name, img, type,quantity,price,cateID) VALUES(?,?,0,?,?,?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setObject(1, orderDetail.getOrder_id());
-            ps.setObject(2, orderDetail.getOrder_id());
-            ps.setObject(3, orderDetail.getQuantity());
-            ps.setObject(4, orderDetail.getTotal());
-
-            ps.executeQuery();
-
+            ps.setString(1, product.getName());
+            ps.setString(2, product.getImage());
+            ps.setInt(3, product.getQuantity());
+            ps.setInt(4,product.getPrice());
+            ps.setInt(5,product.getCateID());
+            ps.executeUpdate();
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+    public boolean deleteProductById(int id) {
+        String sql = "DELETE FROM products WHERE id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    public boolean updateProducct(String name, String img, int quantity, int price, int cateID, String id){
+        String sql = "UPDATE products SET name =?, img=?, quantity=?,price =?, cateID=? WHERE id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setString(2,img);
+            ps.setInt(3, quantity);
+            ps.setInt(4,price);
+            ps.setInt(5,cateID);
+            ps.setString(6,id);
+            ps.executeUpdate();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 
     public List<Product> getAllProduct() {
         List<Product> list = new ArrayList<>();
@@ -313,19 +341,9 @@ public class ControllerDAO {
 
 
     public static void main(String[] args) {
-        try {
-            ControllerDAO dao = new ControllerDAO();
-            List<Product> list = dao.getAllProduct();
-            if (!list.isEmpty()) {
-                for (Product a : list) {
-                    System.out.println(a);
-                }
-            } else {
-                System.out.println("Danh sách sản phẩm trống.");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+       ControllerDAO dao = new ControllerDAO();
+       System.out.println(dao.getById(40));
+       System.out.println(dao.updateProducct("nam linh chi pro max","https://nhansamhanquoc.vn/pic/Product/cao-sam-h_638074087320465111_HasThumb_Thumb.jpg",100,14000000,2,"40"));
     }
 
 }
