@@ -93,79 +93,14 @@
     session.setAttribute("totalPrice", totalPrice);
 %>
 
-
-<%--Kiểm tra xem người đùng đã nhập thông tin chưa và in ra lỗi nếu không nhập--%>
-
-<%
-    String errorFullName = (String) session.getAttribute("errorFullName");
-    String errorPhone = (String) session.getAttribute("errorPhone");
-    String errorEmail = (String) session.getAttribute("errorEmail");
-    String errorAddress = (String) session.getAttribute("errorAddress");
-    String errorCity = (String) session.getAttribute("errorCity");
-    String errorDistrict = (String) session.getAttribute("errorDistrict");
-
-
-    if (errorFullName != null) {
-%>
-<div class="alert alert-danger" role="alert">
-    <%= errorFullName %>
-</div>
-<%
-    }
-
-    if (errorPhone != null) {
-%>
-<div class="alert alert-danger" role="alert">
-    <%= errorPhone %>
-</div>
-<%
-    }
-
-    if (errorEmail != null) {
-%>
-<div class="alert alert-danger" role="alert">
-    <%= errorEmail %>
-</div>
-<%
-    }
-
-    if (errorAddress != null) {
-%>
-<div class="alert alert-danger" role="alert">
-    <%= errorAddress %>
-</div>
-<%
-    }
-
-    if (errorCity != null) {
-%>
-<div class="alert alert-danger" role="alert">
-    <%= errorCity %>
-</div>
-<%
-    }
-
-    if (errorDistrict != null) {
-%>
-<div class="alert alert-danger" role="alert">
-    <%= errorDistrict %>
-</div>
-<%
-    }
-%>
-
-
-
-
 <div id="confirm-bill">
-
 <h1>Thủ tục thanh toán</h1>
 <div id="bill-wrapper">
     <div id="information-customer">
         <h2>Thông tin khách hàng</h2>
 
 
-        <form action="checkout" method="post" id="checkoutForm" onsubmit="return validateForm()">
+        <form action="checkout" method="post" >
             <div class="fullname user">
             <label>Họ và tên:</label>
             <input type="text" name="fullname">
@@ -282,7 +217,6 @@
         <%= successMessage %>
     </div>
     <%
-            // Xóa thông báo thành công khỏi session để tránh hiển thị lại khi refresh trang
             session.removeAttribute("successMessage");
         }
     %>
@@ -296,7 +230,7 @@
                 <span>Giao Hàng: Miễn phí</span>
             </div>
             <div>
-                <span>Tổng tiền: <b style="padding:0 10px;"><%= session.getAttribute("totalPrice") %></b></span>
+                <span name="total">Tổng tiền: <b style="padding:0 10px;"><%= session.getAttribute("totalPrice") %></b></span>
             </div>
 
 
@@ -320,36 +254,7 @@
 </div>
 </div>
 </body>
-<script>
-    function validateForm() {
-        // Kiểm tra các trường input
-        var fullName = document.forms["checkoutForm"]["fullname"].value;
-        var phone = document.forms["checkoutForm"]["phone"].value;
-        var email = document.forms["checkoutForm"]["email"].value;
-        var address = document.forms["checkoutForm"]["address"].value;
-        var city = document.forms["checkoutForm"]["city"].value;
-        var district = document.forms["checkoutForm"]["district"].value;
 
-        // Kiểm tra checkbox
-        var checkbox = document.getElementById("flexCheckDefault");
-
-        // Kiểm tra nếu có trường nào chưa nhập thông tin
-        if (fullName === "" || phone === "" || email === "" || address === "" || city === "" || district === "") {
-            alert("Vui lòng nhập đầy đủ thông tin.");
-            return false;
-        }
-
-        // Kiểm tra xem checkbox đã được tick chưa
-        if (!checkbox.checked) {
-            alert("Vui lòng chấp nhận điều khoản và điều kiện.");
-            return false;
-        }
-
-        // Nếu các điều kiện đều thoả mãn, cho phép thanh toán
-        alert("Bạn đã thanh toán thành công!");
-        return true;
-    }
-</script>
 
 
 </html>

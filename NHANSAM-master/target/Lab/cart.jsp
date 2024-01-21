@@ -113,7 +113,14 @@
         </div>
     </div>
 </header>
-
+<div class="abc" style="padding: 20px 100px; border: 1px solid aliceblue;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.jsp" style="color: black;text-decoration: none; font-size: 16px;">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="cart.jsp" style="color: #BF1E2E;text-decoration: none; font-size: 16px;">Giỏ hàng </a></li>
+        </ol>
+    </nav>
+</div>
 
 <%
     Cart cart = (Cart) session.getAttribute("cart");
@@ -186,8 +193,8 @@
     } %>
 <div class="totalp">
     <div class="checkout">
-        <a href="checkout.jsp">Thanh Toán</a>
         <a href="index.jsp">Continue Shopping</a>
+        <a href="checkout.jsp">Thanh Toán</a>
     </div>
     <div class="totalpro">
         <p>Tổng giá cho Tất cả Sản phẩm: <%= session.getAttribute("totalPriceForAllProducts") %></p>

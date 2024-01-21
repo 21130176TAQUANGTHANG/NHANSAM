@@ -72,7 +72,14 @@
     </div>
 </header>
 
-
+<div class="abc" style="padding: 20px 100px; border: 1px solid aliceblue;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.jsp" style="color: black;text-decoration: none; font-size: 16px;">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="contact.html" style="color: #BF1E2E;text-decoration: none; font-size: 16px;">Đăng ký tài khoản </a></li>
+        </ol>
+    </nav>
+</div>
 <div id="login-super">
 
     <div class="login">
