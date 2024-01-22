@@ -4,12 +4,14 @@ public class Category {
     private int id;
     private String name;
 
+    private int cateID;
     public Category() {
     }
 
-    public Category(int id, String name) {
+    public Category(int id, String name, int cateID) {
         this.id = id;
         this.name = name;
+        this.cateID = cateID;
     }
 
     @Override

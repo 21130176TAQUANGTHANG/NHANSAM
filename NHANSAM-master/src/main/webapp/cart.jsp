@@ -177,12 +177,13 @@
                            onchange="updateTotal(<%= product.getPrice() %>, <%= product.getId() %>)">
                 </td>
                 <td><%= cartProduct.getSubtotal()%></td>
-                <td>
-                    <input type="hidden" name="productId" value="<%= product.getId() %>">
-                    <button class="remove" type="submit"><i class="bi bi-x-lg"></i></button>
-                </td>
             </form>
-
+                <form action="RemoveCart" method="get">
+                    <td>
+                        <input type="hidden" name="productId" value="<%= product.getId() %>">
+                        <button class="remove" type="submit"><i class="bi bi-x-lg"></i></button>
+                    </td>
+                </form>
         </tr>
 
         </tbody>

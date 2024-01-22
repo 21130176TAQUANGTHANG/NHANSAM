@@ -9,11 +9,6 @@ import java.io.IOException;
 public class RemoveCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productId = Integer.parseInt(request.getParameter("productId"));
 
         HttpSession session = request.getSession();
@@ -25,4 +20,5 @@ public class RemoveCart extends HttpServlet {
 
         response.sendRedirect("cart.jsp");
     }
+
 }

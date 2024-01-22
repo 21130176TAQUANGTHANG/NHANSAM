@@ -107,7 +107,8 @@
     <div class="popup">
         <span class="close-btn" onclick="togglePopup()">&times;</span>
         <h2>Thông tin cá nhân</h2>
-        <form>
+        <form action="AddUser" method="post">
+
             <label for="account">Tài khoản:</label>
             <input type="text" id="account" name="account" required>
 
@@ -124,7 +125,7 @@
             <input type="text" id="address" name="address" required>
 
             <label for="position">Chức vụ:</label>
-            <input type="text" id="position" name="position" required>
+            <input type="number" id="position" name="position" required>
 
             <button type="submit">Đăng ký</button>
         </form>
@@ -143,6 +144,7 @@
                 <th>Số điện thoại</th>
                 <th>Địa chỉ</th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -158,7 +160,14 @@
                 <td><%=a.getFullname()%></td>
                 <td><%=a.getPhone()%></td>
                 <td><%=a.getAddress()%></td>
-                <td><a href="#"><i class="bi bi-x-lg" style="color: rgba(255,0,0,0.81);"></i></a></td>
+                <td>
+                    <a href="ViewUser?pid=<%=a.getId()%>"><i class="bi bi-pencil-square"></i></a>
+                </td>
+                <td>
+                    <a href="DeleteUser?pid=<%=a.getId()%>" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?');">
+                        <i class="bi bi-trash3-fill" style="color: red"></i>
+                    </a>
+                </td>
             </tr>
            <%}%>
             </tbody>

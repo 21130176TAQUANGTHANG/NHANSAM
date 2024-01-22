@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerDAO {
-    Connection conn=null;
-    PreparedStatement ps =null;
-    ResultSet rs= null;
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
 
     public boolean updatePassword(String password, String username) {
@@ -36,8 +36,8 @@ public class ControllerDAO {
         }
     }
 
-    public List<User> getAllAccount(){
-        List<User>list=new ArrayList<>();
+    public List<User> getAllAccount() {
+        List<User> list = new ArrayList<>();
         String query = "SELECT * FROM users";
         try {
             conn = new DBContext().getConnection();
@@ -61,13 +61,14 @@ public class ControllerDAO {
         }
         return list;
     }
-    public User checkLogin(String username, String password){
+
+    public User checkLogin(String username, String password) {
         try {
-            String query="SELECT*FROM users WHERE username=? AND password=?";
+            String query = "SELECT*FROM users WHERE username=? AND password=?";
             conn = new DBContext().getConnection();
-            ps=conn.prepareStatement(query);
-            ps.setString(1,username);
-            ps.setString(2,password);
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
             rs = ps.executeQuery();
             while (rs.next()) {
                 User a = new User(
@@ -90,13 +91,13 @@ public class ControllerDAO {
     }
 
 
-    public User checkLoginExist( String username){
-        String query="SELECT*FROM users WHERE username=?";
+    public User checkLoginExist(String username) {
+        String query = "SELECT*FROM users WHERE username=?";
         try {
             conn = new DBContext().getConnection();
-            ps=conn.prepareStatement(query);
-            ps.setString(1,username);
-            rs=ps.executeQuery();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 User a = new User(
                         rs.getInt(1), // Sửa đúng số cột trả về từ câu truy vấn
@@ -116,16 +117,17 @@ public class ControllerDAO {
         }
         return null;
     }
-    public void signup(String username,String password, String Fullname, String phone,String address){
+
+    public void signup(String username, String password, String Fullname, String phone, String address) {
         String query = "INSERT INTO users(username, password, Fullname, phone, address, role) VALUES(?, ?, ?, ?, ?, 0)";
         try {
-            conn= new DBContext().getConnection();
+            conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1,username);
-            ps.setString(2,password);
-            ps.setString(3,Fullname);
-            ps.setString(4,phone);
-            ps.setString(5,address);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, Fullname);
+            ps.setString(4, phone);
+            ps.setString(5, address);
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -133,7 +135,7 @@ public class ControllerDAO {
         }
     }
 
-    public int historyProduct(OrderProduct orderProduct){
+    public int historyProduct(OrderProduct orderProduct) {
         String sql = "INSERT INTO orderproduct(name, phone,email,address,district, city, total) VALUES(?,?,?,?,?,?,?)";
         try {
             conn = new DBContext().getConnection();
@@ -144,7 +146,7 @@ public class ControllerDAO {
             ps.setString(4, orderProduct.getAddress());
             ps.setString(5, orderProduct.getDistrict());
             ps.setString(6, orderProduct.getCity());
-            ps.setDouble(7,orderProduct.getTotal());
+            ps.setDouble(7, orderProduct.getTotal());
             ps.executeUpdate();
 
             try (ResultSet rss = ps.getGeneratedKeys()) {
@@ -161,15 +163,15 @@ public class ControllerDAO {
 
     }
 
-    public void OrderDetail(OrderDetail orderDetail){
+    public void OrderDetail(OrderDetail orderDetail) {
         String query = "INSERT INTO odersdetail(product_id, order_id, quantity, price) VALUES(?, ?, ?, ?)";
         try {
-            conn= new DBContext().getConnection();
+            conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,orderDetail.getProduct_id());
-            ps.setInt(2,orderDetail.getOrder_id());
-            ps.setInt(3,orderDetail.getQuantity());
-            ps.setDouble(4,orderDetail.getTotal());
+            ps.setInt(1, orderDetail.getProduct_id());
+            ps.setInt(2, orderDetail.getOrder_id());
+            ps.setInt(3, orderDetail.getQuantity());
+            ps.setDouble(4, orderDetail.getTotal());
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -178,7 +180,7 @@ public class ControllerDAO {
     }
 
 
-    public void addProduct(Product product){
+    public void addProduct(Product product) {
         String sql = "INSERT INTO products(name, img, type,quantity,price,cateID) VALUES(?,?,0,?,?,?)";
         try {
             conn = new DBContext().getConnection();
@@ -186,14 +188,33 @@ public class ControllerDAO {
             ps.setString(1, product.getName());
             ps.setString(2, product.getImage());
             ps.setInt(3, product.getQuantity());
-            ps.setInt(4,product.getPrice());
-            ps.setInt(5,product.getCateID());
+            ps.setInt(4, product.getPrice());
+            ps.setInt(5, product.getCateID());
             ps.executeUpdate();
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+    public void addUser(User user) {
+        String sql = "INSERT INTO users(username, password, Fullname, phone, address,role) VALUES(?,?,?,?,?,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,user.getUsername());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getFullname());
+            ps.setString(4, user.getPhone());
+            ps.setString (5,user.getAddress());
+            ps.setInt(6, user.getRole());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean deleteProductById(int id) {
         String sql = "DELETE FROM products WHERE id=?";
         try {
@@ -207,17 +228,31 @@ public class ControllerDAO {
         }
         return true;
     }
-    public boolean updateProducct(String name, String img, int quantity, int price, int cateID, String id){
+    public boolean deleteUserById(int id) {
+        String sql = "DELETE FROM users WHERE id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean updateProducct(String name, String img, int quantity, int price, int cateID, String id) {
         String sql = "UPDATE products SET name =?, img=?, quantity=?,price =?, cateID=? WHERE id=?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, name);
-            ps.setString(2,img);
+            ps.setString(2, img);
             ps.setInt(3, quantity);
-            ps.setInt(4,price);
-            ps.setInt(5,cateID);
-            ps.setString(6,id);
+            ps.setInt(4, price);
+            ps.setInt(5, cateID);
+            ps.setString(6, id);
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -252,14 +287,12 @@ public class ControllerDAO {
     }
 
 
-
-
-    public Product getById(int proid){
+    public Product getById(int proid) {
         String query = "SELECT * FROM products WHERE id=?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,proid);
+            ps.setInt(1, proid);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Product p = new Product(rs.getInt(1),
@@ -276,7 +309,32 @@ public class ControllerDAO {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    return null;
+        return null;
+    }
+
+    public User getUserID(int proid) {
+        String query = "SELECT * FROM users WHERE id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, proid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                User p = new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7));
+                return p;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
 
@@ -317,8 +375,9 @@ public class ControllerDAO {
         }
         return list;
     }
-    public List<Category> getNAMECategory(){
-        List<Category>list=new ArrayList<>();
+
+    public List<Category> getNAMECategory() {
+        List<Category> list = new ArrayList<>();
         String query = "SELECT * FROM categories";
         try {
             conn = new DBContext().getConnection();
@@ -327,7 +386,8 @@ public class ControllerDAO {
             while (rs.next()) {
                 list.add(new Category(
                         rs.getInt(1),
-                        rs.getString(2)
+                        rs.getString(2),
+                        rs.getInt(3)
                 ));
             }
         } catch (SQLException e) {
@@ -339,11 +399,9 @@ public class ControllerDAO {
     }
 
 
-
     public static void main(String[] args) {
-       ControllerDAO dao = new ControllerDAO();
-       System.out.println(dao.getById(40));
-       System.out.println(dao.updateProducct("nam linh chi pro max","https://nhansamhanquoc.vn/pic/Product/cao-sam-h_638074087320465111_HasThumb_Thumb.jpg",100,14000000,2,"40"));
+        ControllerDAO dao = new ControllerDAO();
+        System.out.println(dao.getUserID(3));
     }
 
 }

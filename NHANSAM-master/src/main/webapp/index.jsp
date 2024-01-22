@@ -112,16 +112,16 @@
             </ul>
         </div>
 
-        <div class="search">
-            <form action="./search" method="post">
-                <label>
-                    <input type="text" placeholder="Tìm kiếm" name="text">
-                </label>
-                <button type="submit" style="height: 30px;
-    border: none;
-    background-color: snow;"><i class="bi bi-search"></i></button>
-            </form>
-        </div>
+<%--        <div class="search">--%>
+<%--            <form action="./search" method="post">--%>
+<%--                <label>--%>
+<%--                    <input type="text" placeholder="Tìm kiếm" name="text">--%>
+<%--                </label>--%>
+<%--                <button type="submit" style="height: 30px;--%>
+<%--    border: none;--%>
+<%--    background-color: snow;"><i class="bi bi-search"></i></button>--%>
+<%--            </form>--%>
+<%--        </div>--%>
 
         <div class="account">
             <div class="sign-in">
