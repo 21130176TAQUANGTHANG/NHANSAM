@@ -56,26 +56,26 @@
 <p>KHONG CO tai khoan DE SUA</p>
 <% }else{%>
 
-<form action="EditPr" method="post">
+<form action="EditUser" method="post">
     <h2 style="margin-bottom: 20px;">Sửa thông tin tài khoản</h2>
-
+1
     <label for="id">Id:</label>
     <input value="<%=user.getId()%>" type="text" id="id" name="id" readonly>
 
-    <label for="editName">Tài khoản:</label>
-    <input value="<%=user.getUsername()%>" type="text" id="editName" name="name" required>
+    <label for="editAccount">Tài khoản:</label>
+    <input value="<%=user.getUsername()%>" type="text" id="editAccount" name="editAccount" required>
 
-    <label for="editImg">Mật khẩu:</label>
-    <input value="<%=user.getPassword()%>" type="text" id="editImg" name="img" required>
+    <label for="editPassword">Mật khẩu:</label>
+    <input value="<%=user.getPassword()%>" type="text" id="editPassword" name="editPassword" required>
 
-    <label for="editQuantity">Họ và tên:</label>
-    <input value="<%=user.getUsername()%>" type="number" id="editQuantity" name="quantity" required>
+    <label for="editName">Họ và tên:</label>
+    <input value="<%=user.getFullname()%>" type="text" id="editName" name="editName" required>
 
-    <label for="editPrice">Số điện thoại:</label>
-    <input value="<%=user.getPhone()%>" type="number" id="editPrice" name="price" required>
+    <label for="editPhone">Số điện thoại:</label>
+    <input value="<%=user.getPhone()%>" type="number" id="editPhone" name="editPhone" required>
 
-    <label for="editCateID">Địa chỉ:</label>
-    <input value="<%=user.getAddress()%>" type="number" id="editCateID" name="cateID" required>
+    <label for="editAddress">Địa chỉ:</label>
+    <input value="<%=user.getAddress()%>" type="text" id="editAddress" name="editAddress" required>
 
     <button type="submit">Sửa thông tin người dùng</button>
 </form>

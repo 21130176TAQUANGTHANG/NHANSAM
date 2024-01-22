@@ -4,6 +4,7 @@ import com.hcmuaf.Product.Category;
 import com.hcmuaf.Product.OrderDetail;
 import com.hcmuaf.Product.OrderProduct;
 import com.hcmuaf.Product.Product;
+import com.hcmuaf.login.History;
 import com.hcmuaf.login.User;
 
 import java.sql.*;
@@ -164,7 +165,7 @@ public class ControllerDAO {
     }
 
     public void OrderDetail(OrderDetail orderDetail) {
-        String query = "INSERT INTO odersdetail(product_id, order_id, quantity, price) VALUES(?, ?, ?, ?)";
+        String query = "INSERT INTO orderdetail(productID, orderID, quantity, price) VALUES(?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -178,6 +179,25 @@ public class ControllerDAO {
             throw new RuntimeException(e);
         }
     }
+    public void history(History history) {
+        String query = "INSERT INTO history(orderID, fullname, phone, email, address, quantity, totalprice) VALUES(?, ?, ?, ?,?,?,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, history.getOrderID());
+            ps.setString(2, history.getFullname());
+            ps.setString(3, history.getPhone());
+            ps.setString(4, history.getEmail());
+            ps.setString(5, history.getAddress());
+            ps.setInt(6, history.getQuantity());
+            ps.setInt(7, history.getTotalprice());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     public void addProduct(Product product) {
@@ -216,7 +236,7 @@ public class ControllerDAO {
     }
 
     public boolean deleteProductById(int id) {
-        String sql = "DELETE FROM products WHERE id=?";
+        String sql = "DELETE FROM products WHERE productID=?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -243,7 +263,7 @@ public class ControllerDAO {
     }
 
     public boolean updateProducct(String name, String img, int quantity, int price, int cateID, String id) {
-        String sql = "UPDATE products SET name =?, img=?, quantity=?,price =?, cateID=? WHERE id=?";
+        String sql = "UPDATE products SET name =?, img=?, quantity=?,price =?, cateID=? WHERE productID = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -259,6 +279,48 @@ public class ControllerDAO {
             e.printStackTrace();
         }
         return true;
+    }
+
+    public boolean updateUser(String username, String password, String name, int phone, String address, int id) {
+        String sql = "UPDATE users SET username =?, password=?, Fullname=?,phone =?, address=? WHERE id = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, name);
+            ps.setInt(4, phone);
+            ps.setString(5, address);
+            ps.setInt(6, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+    public List<History> getHistory() {
+        List<History> list = new ArrayList<>();
+        String query = "SELECT * FROM history";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new History(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7)
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return list;
     }
 
     public List<Product> getAllProduct() {
@@ -288,7 +350,7 @@ public class ControllerDAO {
 
 
     public Product getById(int proid) {
-        String query = "SELECT * FROM products WHERE id=?";
+        String query = "SELECT * FROM products WHERE productID=?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -401,7 +463,9 @@ public class ControllerDAO {
 
     public static void main(String[] args) {
         ControllerDAO dao = new ControllerDAO();
-        System.out.println(dao.getUserID(3));
+        System.out.println(dao.getHistory());
+
+
     }
 
 }

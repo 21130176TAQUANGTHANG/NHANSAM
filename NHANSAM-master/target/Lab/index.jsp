@@ -112,16 +112,6 @@
             </ul>
         </div>
 
-<%--        <div class="search">--%>
-<%--            <form action="./search" method="post">--%>
-<%--                <label>--%>
-<%--                    <input type="text" placeholder="Tìm kiếm" name="text">--%>
-<%--                </label>--%>
-<%--                <button type="submit" style="height: 30px;--%>
-<%--    border: none;--%>
-<%--    background-color: snow;"><i class="bi bi-search"></i></button>--%>
-<%--            </form>--%>
-<%--        </div>--%>
 
         <div class="account">
             <div class="sign-in">
@@ -144,6 +134,28 @@
         </div>
     </div>
 </header>
+
+
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://nhansamlinhchi.net.vn/wp-content/uploads/2020/06/nam-linh-chi-tien-thao-thao-duoc-quy-hiem-viet-nam-han-quoc.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://nhansamthinhphat.com/storage/article/2023-12-04/cach-bao-quan-nam-linh-chi-han-quoc-de-su-dung-lau-dai-khong-hu-van-dam-bao-duoc-chat-01-p7qezp6wuxmj.jpg" class="d-block w-100" alt="...">
+        </div>
+        
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
 <%-------------------------------Card Slider--------------------------------%>
 <h2 style="text-align: center;
     color: red;">Sản phẩm bán chạy</h2>

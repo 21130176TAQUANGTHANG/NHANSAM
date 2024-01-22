@@ -3,6 +3,7 @@ package com.hcmuaf.cart;
 import com.hcmuaf.Product.OrderDetail;
 import com.hcmuaf.Product.OrderProduct;
 import com.hcmuaf.db.ControllerDAO;
+import com.hcmuaf.login.History;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,18 +45,19 @@ public class SaveUserProduct extends HttpServlet {
             for (Map.Entry<Integer, CartProduct> entry : cartData.entrySet()) {
                 totalproduct += entry.getValue().quantity * entry.getValue().product.getPrice();
             }
-            OrderProduct orderProduct = new OrderProduct(fullname,phone,email,address,district,city,totalproduct);
-            int orderID= dao.historyProduct(orderProduct);
 
-
+            OrderProduct orderProduct = new OrderProduct(fullname, phone, email, address, district, city, totalproduct);
+            int orderID = dao.historyProduct(orderProduct);
 
             for (Map.Entry<Integer, CartProduct> Productentry : cartData.entrySet()) {
-                OrderDetail orderDetail = new OrderDetail(Productentry.getValue().product.getId(), orderID,Productentry.getValue().quantity,Productentry.getValue().product.getPrice()*Productentry.getValue().quantity);
+                OrderDetail orderDetail = new OrderDetail(Productentry.getValue().product.getId(), orderID, Productentry.getValue().quantity, Productentry.getValue().product.getPrice() * Productentry.getValue().quantity);
                 dao.OrderDetail(orderDetail);
             }
+            for (Map.Entry<Integer, CartProduct> detail : cartData.entrySet()) {
+                History orderDetail = new History(orderID, fullname, phone, email, address, detail.getValue().getQuantity(), detail.getValue().getSubtotal());
+                dao.history(orderDetail);
+            }
 
-
-            session.removeAttribute("cart");
             resp.sendRedirect("Success.html");
         }
 

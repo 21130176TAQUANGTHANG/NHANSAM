@@ -112,16 +112,6 @@
             </ul>
         </div>
 
-<%--        <div class="search">--%>
-<%--            <form action="./search" method="post">--%>
-<%--                <label>--%>
-<%--                    <input type="text" placeholder="Tìm kiếm" name="text">--%>
-<%--                </label>--%>
-<%--                <button type="submit" style="height: 30px;--%>
-<%--    border: none;--%>
-<%--    background-color: snow;"><i class="bi bi-search"></i></button>--%>
-<%--            </form>--%>
-<%--        </div>--%>
 
         <div class="account">
             <div class="sign-in">
@@ -144,9 +134,31 @@
         </div>
     </div>
 </header>
+
+
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://nhansamlinhchi.net.vn/wp-content/uploads/2020/06/nam-linh-chi-tien-thao-thao-duoc-quy-hiem-viet-nam-han-quoc.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://nhansamthinhphat.com/storage/article/2023-12-04/cach-bao-quan-nam-linh-chi-han-quoc-de-su-dung-lau-dai-khong-hu-van-dam-bao-duoc-chat-01-p7qezp6wuxmj.jpg" class="d-block w-100" alt="...">
+        </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
 <%-------------------------------Card Slider--------------------------------%>
 <h2 style="text-align: center;
-    color: red;">Sản phẩm bán chạy</h2>
+    color: red;padding-top: 30px">Sản phẩm bán chạy</h2>
 <div id="formList">
     <div id="list">
         <div class="item">
@@ -198,10 +210,10 @@
 
         <div class="item">
             <div class="product-ite">
-                <img src="https://samyenngochoang.com/wp-content/uploads/2020/08/Yen-chung-hu-100ml.gif" alt="Mô tả hình ảnh" width="200" height="190">
-                <a href="Products/Yenxao/yx6.jsp"><p>Yến Chưng Hồng Hoa Cúc Táo Đỏ Đường Stevia- Hũ 100ml </p></a>
+                <img src="https://kgin.com.vn/wp-content/uploads/2021/09/nam-linh-chi-nui-1.jpg" alt="Mô tả hình ảnh" width="200" height="190">
+                <a href="Products/NamLinhChi/nlc4.jsp"><p>Nấm Linh Chi Núi Đá Vàng Hàn Quốc Túi 1 Kg</p></a>
                 <div class="buy">
-                    <p>110,000</p>
+                    <p>2,300,000</p>
                     <button type="button" class="btn-ginseng">Mua</button>
                 </div>
             </div>
@@ -222,7 +234,7 @@
         <div class="item">
 
             <div class="product-ite" style="width: auto">
-                <img src="https://japana.vn/uploads/product/2022/05/18/1652855345-bo-gan-matsukiyo-turmeric-loc-6-chai-x-100ml-0.jpg" alt="Mô tả hình ảnh" width="200" height="190">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUKCtX1SlK36ISvJSn4QUKWtRnhS4N265AWg&usqp=CAU" alt="Mô tả hình ảnh" width="200" height="190">
                 <a href="Products/NuocBoGan/nbg4.jsp"><p>Nước Uống Tinh Chất Nghệ Bổ Gan Matsukiyo Turmeric (Lốc 6 Chai x 100ml) </p></a>
                 <div class="buy">
                     <p>490,000</p>
@@ -231,16 +243,7 @@
             </div>
 
         </div>
-        <div class="item">
-            <div class="product-ite">
-                <img src="img/namlinhxanh2bich.png" alt="">
-                <a href="Products/Namlimxanh/sp5.jsp"><p>Nấm lim xanh tự nhiên Tiên Phước Quảng Nam 100% loại 2 bịch 0,5kg </p></a>
-                <div class="buy">
-                    <p>1.750.000 VND</p>
-                    <button type="button" class="btn-ginseng">Mua</button>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 
