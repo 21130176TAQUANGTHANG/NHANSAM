@@ -101,6 +101,10 @@
                     <a href="#"><i class="bi bi-cart"></i>Mua</a>
                 </div>
                 <div class="buy-item">
+                    <%
+                        ControllerDAO db = new ControllerDAO();
+                        Product product = db.getById(5);
+                    %>
                     <a href="#"><i class="bi bi-cart"></i>add cart</a>
                     <a href="../../add-cart?id=<%= product.getId(5)%>">Thêm vào giỏ hàng</a>
                 </div>

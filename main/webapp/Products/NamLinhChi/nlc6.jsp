@@ -87,6 +87,7 @@
                 <p>Tình trạng: <b>Còn hàng</b></p>
                 <p>Thương hiệu: <b style="color: #BF1E2E">Nấm Linh Chi Việt Nam</b> </p>
                 <p>Xuất xứ: Việt Nam</p>
+                <p>Xuất xứ: Việt Nam</p>
                 <p>Trọng lượng: 500g</p>
 
 
@@ -96,6 +97,10 @@
                     <a href="#"><i class="bi bi-cart"></i>Mua</a>
                 </div>
                 <div class="buy-item">
+                    <%
+                        ControllerDAO db = new ControllerDAO();
+                        Product product = db.getById(24);
+                    %>
                     <a href="#"><i class="bi bi-cart"></i>add cart</a>
                     <a href="../../add-cart?id=<%= product.getId(24)%>">Thêm vào giỏ hàng</a>
                 </div>
