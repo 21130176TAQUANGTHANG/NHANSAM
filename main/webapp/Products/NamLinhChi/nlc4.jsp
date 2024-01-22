@@ -91,11 +91,7 @@
                 <p>Trọng lượng: 1kg</p>
 
 
-                <p>Giá: <b style="color: #BF1E2E; font-size: 25px; margin-left: 30px">2,300,000</b> </p>
-                <label for="quantity">Số lượng: </label>
-                <button class="quantity-btn" onclick="decrement()">-</button>
-                <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
-                <button class="quantity-btn" onclick="increment()">+</button>
+
 
                 <div class="buy-item">
                     <a href="#"><i class="bi bi-cart"></i>Mua</a>
