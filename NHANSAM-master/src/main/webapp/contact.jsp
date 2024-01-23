@@ -31,13 +31,13 @@
                     <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">GIỎ HÀNG </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                    <a class="nav-link" href="policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
@@ -90,16 +90,16 @@
 
 <div class="formcarry-container">
     <form action="#" method="POST" class="formcarry-form">
-        <label for="name">Your Name</label>
+        <label for="name">Họ và tên</label>
         <input type="text" id="name" name="fullName" required />
 
-        <label for="email">Your Email Address</label>
+        <label for="email">Địa chỉ email</label>
         <input type="email" id="email" name="email" required />
 
-        <label for="message">Your Message</label>
+        <label for="message">Nội dung </label>
         <textarea name="message" id="message" cols="30" rows="10"></textarea>
 
-        <button type="submit">Send</button>
+        <button type="submit">Gửi</button>
     </form>
 </div>
 <footer style="background-color: #BF1E2E;">

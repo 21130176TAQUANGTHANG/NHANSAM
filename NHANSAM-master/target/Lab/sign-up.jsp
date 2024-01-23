@@ -25,10 +25,10 @@
                     <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">GIỎ HÀNG </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
@@ -39,16 +39,6 @@
             </ul>
         </div>
 
-        <div class="search">
-            <form action="./search" method="post">
-                <label>
-                    <input type="text" placeholder="Tìm kiếm" name="text">
-                </label>
-                <button type="submit" style="height: 30px;
-    border: none;
-    background-color: snow;"><i class="bi bi-search"></i></button>
-            </form>
-        </div>
 
         <div class="account">
             <div class="sign-in">

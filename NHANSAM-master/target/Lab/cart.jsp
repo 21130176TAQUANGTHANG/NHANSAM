@@ -70,10 +70,10 @@
                     <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">GIỎ HÀNG  </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                    <a class="nav-link" href="policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
@@ -159,9 +159,7 @@
                 <td><img src="<%= product.getImage()%>" alt="Handbag"></td>
                 <td><%= product.getName()%></td>
                 <td><%= product.getPrice()%></td>
-                <%--                                <td>--%>
-                <%--                                    <input type="number" name="quantity" value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;" onchange="updateCart(<%= product.getId() %>, this.value)">--%>
-                <%--                                </td>--%>
+
                 <td>
                     <input type="number" name="quantity" id="quantity_<%= product.getId() %>"
                            value="<%= cartProduct.getQuantity() %>" min="1" style="width: 40px;"

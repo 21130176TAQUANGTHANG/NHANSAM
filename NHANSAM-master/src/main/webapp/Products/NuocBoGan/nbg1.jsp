@@ -1,3 +1,6 @@
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
+<%@ page import="com.hcmuaf.Product.Product" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
@@ -99,8 +102,12 @@
                     <a href="#"><i class="bi bi-cart"></i>Mua</a>
                 </div>
                 <div class="buy-item">
+                    <%
+                        ControllerDAO db = new ControllerDAO();
+                        Product product = db.getById(35);
+                    %>
                     <a href="#"><i class="bi bi-cart"></i>add cart</a>
-                    <a href="../../add-cart?id=<%= product.getId(35)%>">Thêm vào giỏ hàng</a>
+                    <a href="../../add-cart?id=<%= product.getId()%>">Thêm vào giỏ hàng</a>
                 </div>
             </div>
 

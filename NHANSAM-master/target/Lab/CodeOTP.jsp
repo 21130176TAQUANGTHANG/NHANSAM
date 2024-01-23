@@ -34,7 +34,7 @@
                     <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">GIỎ HÀNG  </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
@@ -88,14 +88,20 @@
     <form action="./ValidateOTP" method="post">
 
         <div class="form-group">
-            <div class="input-group">
+            <% if (request.getAttribute("message") != null) { %>
+            <p style="color: red;"><%= request.getAttribute("message") %></p>
+            <% } %>
+            <div class="input-group" style="position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    justify-content: center">
                 <input name="otp" placeholder="Nhập mã xác nhận" type="text" required>
-                <% if (request.getAttribute("message") != null) { %>
-                <p style="color: red;"><%= request.getAttribute("message") %></p>
-                <% } %>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display: flex;
+    justify-content: center;">
             <input name="recover-submit" value="Reset Password" type="submit">
         </div>
     </form>

@@ -36,13 +36,13 @@
                     <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">GIỎ HÀNG  </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                    <a class="nav-link" href="policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
@@ -96,7 +96,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.jsp" style="color: black;text-decoration: none; font-size: 16px;">Trang chủ</a></li>
-            <li class="breadcrumb-item"><a href="Productss.jsp" style="color: #BF1E2E;text-decoration: none; font-size: 16px;">Chính sách đổi trả</a></li>
+            <li class="breadcrumb-item"><a href="Productss.jsp" style="color: #BF1E2E;text-decoration: none; font-size: 16px;">Sản phẩm</a></li>
         </ol>
     </nav>
 </div>

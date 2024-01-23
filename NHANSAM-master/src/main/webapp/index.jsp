@@ -101,7 +101,7 @@
                     <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">Giỏ hàng</a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">GIỎ HÀNG</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
@@ -209,7 +209,7 @@
         </div>
 
         <div class="item">
-            <div class="product-ite">
+            <div class="product-ite" style="width: auto">
                 <img src="https://kgin.com.vn/wp-content/uploads/2021/09/nam-linh-chi-nui-1.jpg" alt="Mô tả hình ảnh" width="200" height="190">
                 <a href="Products/NamLinhChi/nlc4.jsp"><p>Nấm Linh Chi Núi Đá Vàng Hàn Quốc Túi 1 Kg</p></a>
                 <div class="buy">

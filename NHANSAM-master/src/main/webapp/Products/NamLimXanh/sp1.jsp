@@ -2,6 +2,8 @@
 <%@ page import="com.hcmuaf.login.User" %>
 <%@ page import="com.hcmuaf.db.ControllerDAO" %>
 <%@ page import="com.hcmuaf.Product.Product" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: thang
@@ -33,13 +35,13 @@
                     <a class="nav-link" aria-current="page" href="../../index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="../../Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../cart.jsp"style="color: #BF1E2E;">CART </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                    <a class="nav-link" href="../../policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
@@ -127,7 +129,7 @@
                             ControllerDAO db = new ControllerDAO();
                             Product product = db.getById(1);
                         %>
-                    <a href="../../add-cart?id=<%= product.getId(1)%>">Thêm vào giỏ hàng</a>
+                    <a href="../../add-cart?id=<%= product.getId()%>">Thêm vào giỏ hàng</a>
 
                 </div>
             </div>

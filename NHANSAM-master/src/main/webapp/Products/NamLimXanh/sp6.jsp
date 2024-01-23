@@ -1,3 +1,8 @@
+<%@ page import="com.hcmuaf.login.User" %>
+<%@ page import="com.hcmuaf.db.ControllerDAO" %>
+<%@ page import="com.hcmuaf.Product.Product" %>
+<%@ page import="com.hcmuaf.cart.Cart" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
@@ -67,6 +72,74 @@
             <a href="cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
         </div>
     </div>
+</header><header id="header">
+    <div class="header-menu">
+
+        <div class="logo">
+            <a href="../../index.jsp"><i class="bi bi-yin-yang" style="font-size: 30px; color: #BF1E2E;"></i></a>
+        </div>
+
+        <div class="menu">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../../index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../cart.jsp"style="color: #BF1E2E;">CART </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../policy.html"style="color: #BF1E2E;">CHÍNH SÁCH</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../contact.jsp"style="color: #BF1E2E;">LIÊN HỆ</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <form action="" method="get">
+                <label>
+                    <input type="text" placeholder="Tìm kiếm" name="searchText">
+                </label>
+                <button type="submit" style="height: 30px;
+        border: none;
+        background-color: snow;"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+
+
+        <div class="account">
+            <div class="sign-in">
+                <% User auth = (User) session.getAttribute("auth"); %>
+                <% if(auth == null){ %>
+                <a href="sign-up.jsp" style="color:#BF1E2E;
+    text-decoration: none;
+    font-size: 20px;">Đăng ký</a>
+                <a href="login.jsp" style="color: #BF1E2E;
+    text-decoration: none;
+    font-size: 20px;">Đăng nhập</a>
+                <% } else { %>
+                <p>Chào bạn: <%= auth.getFullname() %> </p>
+                <a href="logout.jsp">Đăng xuất</a>
+                <% } %>
+            </div>
+        </div>
+        <div class="shopping-img">
+
+            <%
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null)
+                    cart = new Cart();
+
+            %>
+
+            <a href="cart.jsp"><i class="bi bi-bag-fill" style="font-size: 30px"></i></a>
+            <span><%= cart.getTotal()%></span>
+        </div>
+    </div>
 </header>
 
 <div class="abc" style="padding: 20px 100px; border: 1px solid aliceblue;">
@@ -100,8 +173,12 @@
                     <a href="#"><i class="bi bi-cart"></i>Mua</a>
                 </div>
                 <div class="buy-item">
+                    <%
+                        ControllerDAO db = new ControllerDAO();
+                        Product product = db.getById(6);
+                    %>
                     <a href="#"><i class="bi bi-cart"></i>add cart</a>
-                    <a href="../../add-cart?id=<%= product.getId(6)%>">Thêm vào giỏ hàng</a>
+                    <a href="../../add-cart?id=<%= product.getId()%>">Thêm vào giỏ hàng</a>
                 </div>
             </div>
 

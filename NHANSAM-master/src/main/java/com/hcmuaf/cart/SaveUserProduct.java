@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
+
 @WebServlet(name = "SaveUserProduct", value = "/checkout")
 public class SaveUserProduct extends HttpServlet {
     @Override
@@ -30,6 +32,31 @@ public class SaveUserProduct extends HttpServlet {
         String city = req.getParameter("city");
         String district = req.getParameter("district");
         String checkbox = req.getParameter("agreeCheckbox");
+
+
+        if (fullname == null || fullname.trim().isEmpty()) {
+            req.setAttribute("error", "Vui lòng điền họ và tên vào.");
+            req.getRequestDispatcher("checkout.jsp").forward(req, resp);
+            return; // Stop processing further
+        }
+        if (phone == null || phone.trim().isEmpty() || !Pattern.matches("^\\d{10,12}$", phone)) {
+            req.setAttribute("error", "Vui lòng điền số điện thoại vào.");
+            req.getRequestDispatcher("checkout.jsp").forward(req, resp);
+            return;
+        }
+
+        if (email == null || email.trim().isEmpty()) {
+            req.setAttribute("error", "Vui lòng điền địa chỉ email.");
+            req.getRequestDispatcher("checkout.jsp").forward(req, resp);
+            return;
+        }
+
+        if (address == null || address.trim().isEmpty()) {
+            req.setAttribute("error", "Vui lòng điền địa chỉ giao hàng.");
+            req.getRequestDispatcher("checkout.jsp").forward(req, resp);
+            return;
+        }
+
 
 
         ControllerDAO dao = new ControllerDAO();
@@ -58,7 +85,7 @@ public class SaveUserProduct extends HttpServlet {
                 dao.history(orderDetail);
             }
 
-            resp.sendRedirect("Success.html");
+            resp.sendRedirect("Success.jsp");
         }
 
 

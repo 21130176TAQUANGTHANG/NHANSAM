@@ -32,10 +32,10 @@
                     <a class="nav-link" aria-current="page" href="index.jsp" style="color: #BF1E2E;">TRANG CHỦ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Products.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
+                    <a class="nav-link" href="Productss.jsp"style="color: #BF1E2E;">SẢN PHẨM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">CART </a>
+                    <a class="nav-link" href="cart.jsp"style="color: #BF1E2E;">Giỏ hàng </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="policy.jsp"style="color: #BF1E2E;">CHÍNH SÁCH</a>
@@ -80,13 +80,15 @@
 </header>
 <form action="NewPassword" method="post">
 
-        <div class="new-password">
-            <span>Mật khâ mới:</span>
+        <div class="new-password" style="display: flex;
+    justify-content: center;">
+            <span>Mật khẩu mới:</span>
             <input type="password" name="password" required>
         </div>
 
-    <div class="new-password">
-            <span>Xác nhận lại mạt khẩu:</span>
+    <div class="new-password" style="display: flex;
+    justify-content: center;">
+            <span>Xác nhận lại mật khẩu:</span>
             <input type="password" name="confPassword" required>
         <% if(request.getAttribute("message") != null) { %>
         <p style="color: red;"><%= request.getAttribute("message") %></p>
