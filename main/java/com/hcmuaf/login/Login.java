@@ -16,8 +16,7 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String username = request.getParameter("username");
+        String username = request.getParameter("usernaxme");
         String password = request.getParameter("password");
         ControllerDAO dao = new ControllerDAO();
         User a = dao.checkLogin(username, password);
